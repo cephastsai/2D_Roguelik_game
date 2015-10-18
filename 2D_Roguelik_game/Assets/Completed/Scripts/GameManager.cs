@@ -9,6 +9,7 @@ namespace Completed
 	
 	public class GameManager : MonoBehaviour
 	{
+		//1
 		public float levelStartDelay = 2f;						//Time to wait before starting level, in seconds.
         public float gameEndDelay = 5f;                         //Time to wait before change Main scene to End scene, in seconds.
         public float turnDelay = 0.1f;							//Delay between each Player turn.
