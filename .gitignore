@@ -199,3 +199,4 @@ Library/
 2D_Roguelik_game/2D_Roguelik_game.sln
 *.sln
 *.csproj
+*.userprefs
