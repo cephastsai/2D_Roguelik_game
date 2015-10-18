@@ -85,7 +85,7 @@ namespace Completed
 			
 			//Get a reference to our image LevelImage by finding it by name.
 			levelImage = GameObject.Find("LevelImage");
-			//bug001
+			//bug 001
 			canvasBGImage = levelImage.GetComponent<Image>();
 			canvasBGImage.sprite = (Sprite)Resources.Load("blackBG",typeof(Sprite));
 
