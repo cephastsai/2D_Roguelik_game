@@ -7,6 +7,7 @@ public class test_script_git : MonoBehaviour {
 	void Start () {
 		//1
 		//2
+		//3
 	}
 	
 	// Update is called once per frame
