@@ -183,6 +183,9 @@ $RECYCLE.BIN/
 # Visual Studio 2014 CTP
 **/*.sln.ide
 
+Temp/
+Library/
+
 2D_Roguelik_game/Library/
 2D_Roguelik_game/Library/assetDatabase3
 2D_Roguelik_game/Library/CurrentLayout.dwlt
