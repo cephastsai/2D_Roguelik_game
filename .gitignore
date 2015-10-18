@@ -197,3 +197,5 @@ Library/
 2D_Roguelik_game/Temp/UnityLockfile
 2D_Roguelik_game/Temp/UnityTempFile-14b39e9a7a701f74e9bb8d3656fc7727
 2D_Roguelik_game/2D_Roguelik_game.sln
+*.sln
+*.csproj
