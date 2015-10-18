@@ -10,6 +10,7 @@ public class test_script_git : MonoBehaviour {
 		//3
 		//4
 		//5
+		//6
 	}
 	
 	// Update is called once per frame
