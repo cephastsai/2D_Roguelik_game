@@ -13,14 +13,12 @@ namespace Completed
 		{
 			//Check if a GameManager has already been assigned to static variable GameManager.instance or if it's still null
 			if (GameManager.instance == null){
-				//print("instantiate gamemaneger");
-				//Instantiate gameManager prefab
+
 				Instantiate(gameManager);
 			}
 			//Check if a SoundManager has already been assigned to static variable GameManager.instance or if it's still null
 			if (SoundManager.instance == null){
-				//print("instantiate soundmaneger");
-				//Instantiate SoundManager prefab
+
 				Instantiate(soundManager);
 			}
 		}

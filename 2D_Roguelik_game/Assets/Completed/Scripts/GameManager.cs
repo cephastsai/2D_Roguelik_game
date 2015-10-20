@@ -67,6 +67,7 @@ namespace Completed
 		//This is called each time a scene is loaded.
 		void OnLevelWasLoaded(int index) //當場景載入就不會執行(loader>gamemanager)
 		{
+			print(SceneManager.menu_flag);
             if (SceneManager.menu_flag == false)
             {
                 //Add one to our level number.
