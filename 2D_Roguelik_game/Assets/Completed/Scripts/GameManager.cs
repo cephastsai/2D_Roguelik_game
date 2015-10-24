@@ -68,6 +68,10 @@ namespace Completed
 		void OnLevelWasLoaded(int index) //當場景載入就不會執行(loader>gamemanager)
 		{
 			print(SceneManager.menu_flag);
+            if (SceneManager.menu_flag == true)
+            {
+                gameObject.GetComponent("Reader");
+            }
             if (SceneManager.menu_flag == false)
             {
                 //Add one to our level number.
