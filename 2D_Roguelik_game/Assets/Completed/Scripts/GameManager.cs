@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.IO;
+using UnityEngine.UI;
 
 namespace Completed
 {
@@ -32,9 +34,13 @@ namespace Completed
 		private bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
         private bool gameover_flag = true;
 		private Image canvasBGImage = null;
-		
-		//Awake is always called before any Start functions
-		void Awake()
+
+        private FileInfo theSourceFile = null;
+        private StreamReader StreamReader = null;
+        private string text = " ";
+
+        //Awake is always called before any Start functions
+        void Awake()
 		{
 			Debug.Log ("Awake");
             {
@@ -62,16 +68,34 @@ namespace Completed
                 //Call the InitGame function to initialize the first level 
                 InitGame();
             }
+
+            //檔案讀取
+            theSourceFile = new FileInfo("Assets/Resources/test.txt");
+            StreamReader = theSourceFile.OpenText();
+            if (text != null)
+            {
+                //ReadToEnd:可以將文件從頭讀到尾
+                //ReadLine:只可讀取文件的一行文字
+                text = StreamReader.ReadToEnd();
+                string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
+                int i = 0;
+                while (i < textTemp.Length)
+                {
+                    string[] temp = null;
+                    temp = textTemp[i].Split(new char[] { '-' }); //"-"為每次死亡所存取的數值區格
+                    Debug.Log(temp[0]); //死亡次數
+                    Debug.Log(temp[1]); //死亡關卡
+                    Debug.Log(temp[2]); //死亡的x座標
+                    Debug.Log(temp[3]); //死亡的y座標
+                    i++;
+                }
+            }
         }
 		
 		//This is called each time a scene is loaded.
 		void OnLevelWasLoaded(int index) //當場景載入就不會執行(loader>gamemanager)
 		{
 			print(SceneManager.menu_flag);
-            if (SceneManager.menu_flag == true)
-            {
-                gameObject.GetComponent("Reader");
-            }
             if (SceneManager.menu_flag == false)
             {
                 //Add one to our level number.
@@ -80,7 +104,6 @@ namespace Completed
                 InitGame();
             }
             SceneManager.menu_flag = false;
-
         }
 		
 		//Initializes the game for each level.
