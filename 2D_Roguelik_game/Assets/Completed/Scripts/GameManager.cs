@@ -70,7 +70,7 @@ namespace Completed
             }
 
             //檔案讀取
-            theSourceFile = new FileInfo("Assets/Resources/test.txt");
+            theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
             StreamReader = theSourceFile.OpenText();
             if (text != null)
             {
