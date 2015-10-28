@@ -68,7 +68,7 @@ namespace Completed
                 //Call the InitGame function to initialize the first level 
                 InitGame();
             }
-
+			/*
             //檔案讀取
             theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
             StreamReader = theSourceFile.OpenText();
@@ -90,7 +90,34 @@ namespace Completed
                     i++;
                 }
             }
+			 */			 
         }
+
+		void Start(){
+			//檔案讀取
+			theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
+			StreamReader = theSourceFile.OpenText();
+			if (text != null)
+			{
+				//ReadToEnd:可以將文件從頭讀到尾
+				//ReadLine:只可讀取文件的一行文字
+				text = StreamReader.ReadToEnd();
+				string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
+				int i = 0;
+				while (i < textTemp.Length)
+				{
+					string[] temp = null;
+					temp = textTemp[i].Split(new char[] { '-' }); //"-"為每次死亡所存取的數值區格
+					Debug.Log(temp[0]); //死亡次數
+					Debug.Log(temp[1]); //死亡關卡
+					Debug.Log(temp[2]); //死亡的x座標
+					Debug.Log(temp[3]); //死亡的y座標
+					i++;
+				}
+			}
+
+		}
+
 		
 		//This is called each time a scene is loaded.
 		void OnLevelWasLoaded(int index) //當場景載入就不會執行(loader>gamemanager)
