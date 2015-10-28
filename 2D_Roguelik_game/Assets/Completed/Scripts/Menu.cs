@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class Menu : MonoBehaviour {
-	
+
+	public GameObject RuneManager = null;
+
     void OnGUI()
     {
         if (GUILayout.Button("Start Game"))
@@ -39,7 +41,8 @@ public class Menu : MonoBehaviour {
 	}*/
 	void Start () {
 	//	GameObject  Prefab = Instantiate(Resources.Load("Rune1" ,typeof(GameObject)),RunePosition4,Quaternion.Euler(90, 180, 0)) as GameObject;
-
+		RuneManager = new GameObject("RuneManager");
+		RuneManager.AddComponent<RuneManagerCs>();
 
 	}
 	
