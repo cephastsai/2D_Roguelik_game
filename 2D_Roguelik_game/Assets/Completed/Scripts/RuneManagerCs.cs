@@ -13,7 +13,7 @@ public class RuneManagerCs : MonoBehaviour {
     private StreamReader StreamReader = null;
     private string text = " ";
     private int i = 0;
-    private String[] textTemp = new String[50];
+    private String[] RuneList = new String[50];
 
 
     // Use this for initialization
@@ -29,13 +29,15 @@ public class RuneManagerCs : MonoBehaviour {
 		for(int temp=0;temp<grid.transform.childCount;temp++){
 			grid.transform.GetChild(temp).gameObject.AddComponent<SetRuneMaterial>().init(temp);
         }
+
+        //讀取檔案
         theSourceFile = new FileInfo("Assets/Completed/Resources/rune.txt");
         StreamReader = theSourceFile.OpenText();
         if (text != null)
         {
             text = StreamReader.ReadToEnd();
-            textTemp[i] = text;
-            Debug.Log("test:" + textTemp[i]);
+            RuneList[i] = text;
+            Debug.Log("test:" + RuneList[i]);
             i++;
         }
     }
