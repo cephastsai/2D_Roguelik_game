@@ -9,10 +9,14 @@ public class RuneManagerCs : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
 		grid = canvas.transform.GetChild(1).GetChild(0).gameObject;
 
+		grid.transform.position = new Vector3(0,45,0);
+
+		// add component "SetRuneMaterial" ,all child
 		for(int temp=0;temp<grid.transform.childCount;temp++){
 			grid.transform.GetChild(temp).gameObject.AddComponent<SetRuneMaterial>().init(temp);
 		}
