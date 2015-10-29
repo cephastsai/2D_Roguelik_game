@@ -27,7 +27,12 @@ public class RuneManagerCs : MonoBehaviour {
 
 		// add component "SetRuneMaterial" ,all child
 		for(int temp=0;temp<grid.transform.childCount;temp++){
+			if (RuneList [temp] == "1"){
 			grid.transform.GetChild(temp).gameObject.AddComponent<SetRuneMaterial>().init(temp);
+			}
+			else if (RuneList [temp] == "0"){
+				grid.transform.GetChild(temp).gameObject.AddComponent<SetNullRuneMaterial>().init(temp);
+			}
         }
 
         //讀取檔案
@@ -40,6 +45,9 @@ public class RuneManagerCs : MonoBehaviour {
             Debug.Log("test:" + RuneList[i]);
             i++;
         }
+		/*if (RuneList [0] == '1') {
+
+		}*/
     }
 	
 	// Update is called once per frame
