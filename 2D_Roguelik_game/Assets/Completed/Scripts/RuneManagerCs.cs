@@ -16,17 +16,23 @@ public class RuneManagerCs : MonoBehaviour {
     private StreamReader StreamReader = null;
     private string text = " ";
     private int i = 0;
+	private int[] ListNo = new int[50];
+	private int j = 0;
+	private int CheckPoint = 0;
     //private String[] RuneList = new String[50];
 	private String RuneList;
 
 	void OnGUI() {
 		GUI.skin = RamdomSkin;
-		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage))
+		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage)&&CheckPoint==0)
 		{
 			for(int temp=0;temp<grid.transform.childCount;temp++){
 				print(RuneList[temp]);
 				if (RuneList [temp] == '1'){
-
+					ListNo[j] = temp;
+					j++;
+					Debug.Log(j); 
+					CheckPoint ++;
 				}
 				else if (RuneList [temp] == '0'){
 				
