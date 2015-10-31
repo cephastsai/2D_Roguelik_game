@@ -3,9 +3,6 @@ using System.Collections;
 
 public class Menu : MonoBehaviour {
 
-
-	public GameObject RuneManager = null;
-
     void OnGUI()
     {
         if (GUILayout.Button("Start Game"))
@@ -15,12 +12,8 @@ public class Menu : MonoBehaviour {
     }
 
     // Use this for initialization
-
-	void Start () {
-		RuneManager = new GameObject("RuneManager");
-		RuneManager.AddComponent<RuneManagerCs>();
-
-
+    void Start () {
+	
 	}
 	
 	// Update is called once per frame
