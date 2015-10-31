@@ -35,7 +35,9 @@ public class RuneManagerCs : MonoBehaviour {
 					//K = new int(Random.Range(1,j));
 				}
 			}
-			//print(j);//顯示擁有幾個符文
+            K = UnityEngine.Random.Range(0, j);
+			print(j);//顯示擁有幾個符文
+            print(ListNo[K]); //隨機產生數字
 		}
 		
 	}
