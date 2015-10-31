@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Menu : MonoBehaviour {
 
-
+	//public static bool Button(Rect (10,10,20,20), Ramdom));
 	public GameObject RuneManager = null;
 
     void OnGUI()

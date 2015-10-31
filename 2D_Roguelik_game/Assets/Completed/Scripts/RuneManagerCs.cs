@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class RuneManagerCs : MonoBehaviour {
 
+	public Texture2D ButtonImage = null;
+	public GUISkin RamdomSkin = null;
+
 	private GameObject canvas = null;
 	private GameObject grid = null;
 
@@ -16,9 +19,26 @@ public class RuneManagerCs : MonoBehaviour {
     //private String[] RuneList = new String[50];
 	private String RuneList;
 
+	void OnGUI() {
+		GUI.skin = RamdomSkin;
+		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage))
+		{
+			for(int temp=0;temp<grid.transform.childCount;temp++){
+				print(RuneList[temp]);
+				if (RuneList [temp] == '1'){
+
+				}
+				else if (RuneList [temp] == '0'){
+				
+				}
+			}
+		}
+		
+	}
     // Use this for initialization
     void Start () {
-
+		ButtonImage = (Texture2D)Resources.Load("Image/Ramdom");
+		RamdomSkin =  (GUISkin)Resources.Load("GUISkin/RamdomButton");
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
 		grid = canvas.transform.GetChild(1).GetChild(0).gameObject;
