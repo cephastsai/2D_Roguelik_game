@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RuneManagerCs : MonoBehaviour {
 
 	public Texture2D ButtonImage = null;
-	public GUISkin RamdomSkin = null;
+	public GUISkin RandomSkin = null;
 
 	private GameObject canvas = null;
 	private GameObject grid = null;
@@ -16,35 +16,35 @@ public class RuneManagerCs : MonoBehaviour {
     private StreamReader StreamReader = null;
     private string text = " ";
     private int i = 0;
-	private int[] ListNo = new int[50];
-	private int j = 0;
-	private int CheckPoint = 0;
+	private int[] ListNo = new int[50];//總共的符文數量(預設50個)
+	private int j = 0;//玩家擁有幾個符文
+	private int CheckPoint = 0;//作為點選隨機按鈕的區隔數
     //private String[] RuneList = new String[50];
 	private String RuneList;
+	private int K = 0;
 
 	void OnGUI() {
-		GUI.skin = RamdomSkin;
+		GUI.skin = RandomSkin;
 		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage)&&CheckPoint==0)
 		{
+			CheckPoint +=1;
 			for(int temp=0;temp<grid.transform.childCount;temp++){
-				print(RuneList[temp]);
 				if (RuneList [temp] == '1'){
 					ListNo[j] = temp;
 					j++;
-					Debug.Log(j); 
-					CheckPoint ++;
-				}
-				else if (RuneList [temp] == '0'){
-				
+					//K = new int(Random.Range(1,j));
 				}
 			}
+            K = UnityEngine.Random.Range(0, j);
+			print(j);//顯示擁有幾個符文
+            print(ListNo[K]); //隨機產生數字
 		}
 		
 	}
     // Use this for initialization
     void Start () {
-		ButtonImage = (Texture2D)Resources.Load("Image/Ramdom");
-		RamdomSkin =  (GUISkin)Resources.Load("GUISkin/RamdomButton");
+		ButtonImage = (Texture2D)Resources.Load("Image/Random");
+		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
 		grid = canvas.transform.GetChild(1).GetChild(0).gameObject;
