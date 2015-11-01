@@ -40,7 +40,7 @@ public class InformationReaderCs : MonoBehaviour {
 			//ReadToEnd:可以將文件從頭讀到尾
 			//ReadLine:只可讀取文件的一行文字
 			text = streamReader.ReadToEnd();
-			print(text);
+			//print(text);
 
 			string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
 
@@ -56,7 +56,7 @@ public class InformationReaderCs : MonoBehaviour {
 
 		StreamWriter writer = new StreamWriter("Assets/Completed/Resources/test.txt");
 
-		print(level +","+ posX +","+ posY+","+runeID);
+		//print(level +","+ posX +","+ posY+","+runeID);
 		text = text +";"+ level.ToString() +","+ posX.ToString() +","+ posY.ToString() +","+runeID.ToString();
 		writer.Write(text);
 		writer.Close();

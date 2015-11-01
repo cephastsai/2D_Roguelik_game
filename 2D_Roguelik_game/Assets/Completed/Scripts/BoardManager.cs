@@ -39,7 +39,9 @@ namespace Completed
 		
 		private Transform boardHolder;									//A variable to store a reference to the transform of our Board object.
 		private List <Vector3> gridPositions = new List <Vector3> ();	//A list of possible locations to place tiles.
-		
+		//private Sprite Grave = null;
+		//public GameObject Grave;	
+		private GameObject[] rune = null;
 		
 		//Clears our list gridPositions and prepares it to generate a new board.
 		void InitialiseList ()
@@ -65,6 +67,7 @@ namespace Completed
 		{
 			//Instantiate Board and set boardHolder to its transform.
 			boardHolder = new GameObject ("Board").transform;
+			//Grave = (GameObject)Resources.Load("Grave",typeof(GameObject));
 			
 			//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
 			for(int x = -1; x < columns + 1; x++)
@@ -86,6 +89,16 @@ namespace Completed
 					//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 					instance.transform.SetParent (boardHolder);
 				}
+			}
+			int level = GameManager.instance.getlevel();
+			for(int i =0;i<10;i++){
+				if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
+				print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
+				//rune[i] = new GameObject 
+
+				//Instantiate(Grave, new Vector3(InformationReaderCs.runeinfo[level,3*i], InformationReaderCs.runeinfo[level,3*i+1], -1), Quaternion.identity);
+				//print(i +":"+InformationReaderCs.runeinfo[level,i]);
+
 			}
 		}
 		
