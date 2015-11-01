@@ -11,11 +11,12 @@ public class InformationReaderCs : MonoBehaviour {
 	public static StreamReader streamReader = null;
 	public static StreamWriter streamWriter = null;
 	public static string text = " ";
-	public static int[][][] runeinfo;
+	public static int[,] runeinfo = new int[20,20];
 	//public static string[] temp
 
 	// Use this for initialization
 	void Start () {
+
 
 	}
 	
@@ -37,7 +38,7 @@ public class InformationReaderCs : MonoBehaviour {
 			//ReadToEnd:可以將文件從頭讀到尾
 			//ReadLine:只可讀取文件的一行文字
 			text = streamReader.ReadToEnd();
-			//print(text);
+			print(text);
 
 			string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
 
@@ -50,22 +51,28 @@ public class InformationReaderCs : MonoBehaviour {
 
 	public static void SaveFile(){
 		//print(text);
-		//theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
+
 		StreamWriter writer = new StreamWriter("Assets/Completed/Resources/test.txt");
-		//writer.Write(text,0,20);
+
+		text = text +";2,3,4,5";
 		writer.Write(text);
 		writer.Close();
-		//writer.Dispose();
+		writer.Dispose();
 
 	}
 
 	public static void LoadRuneInfo(string[] Info_str){
 		//for(int i=0;i < Info_str.Length;i++) print(Info_str[i]);
 
+		//init array runeinfo
+		for(int m = 0;m<20;m++)
+			for(int n = 0;n<20;n++)
+				runeinfo[m,n] = -1;
+
 		for(int i=0;i < Info_str.Length;i++){
 			/*
 			string[] temp = null;
-			temp = Info_str[i].Split(new char[] { ',' }); //"-"為每次死亡所存取的數值區格											
+			temp = Info_str[i].Split(new char[] { ',' }); //"-"為每次死亡所存取的數值區格									
 			for(int j=0;j<temp.Length;j++) print(temp[j]);*/
 
 			int[] temp_int = null;
@@ -73,26 +80,21 @@ public class InformationReaderCs : MonoBehaviour {
 
 			//for(int j=0;j<temp_int.Length;j++) print(temp_int[j]);
 
-			/*
-			for(int w=0;w < 10;w++){
-				if( runeinfo[temp_int[0]][w][0] == 0){
-					runeinfo[temp_int[0]][w][0] = -1;
-					runeinfo[temp_int[0]][w][1] = temp_int[1];
-					runeinfo[temp_int[0]][w][2] = temp_int[2];
-					runeinfo[temp_int[0]][w][3] = temp_int[3];
+			for(int w=0;w < 20;w++){
+				if( runeinfo[temp_int[0],w] == -1){
+					runeinfo[temp_int[0],w] 	=  temp_int[1];
+					runeinfo[temp_int[0],w+1]	=  temp_int[2];
+					runeinfo[temp_int[0],w+2] 	=  temp_int[3];
 					break;
 				}
 			}
 
-
-			Debug.Log(temp_int[0]); 
-			Debug.Log(temp_int[1]); 
-			Debug.Log(temp_int[2]); 
-			Debug.Log(temp_int[3]); 
-			*/
-
 		}
-
+		/*
+		for(int i = 0;i<20;i++)
+			for(int j = 0;j<20;j++)
+				print(i +","+ j +":" +runeinfo[i,j]);
+		*/
 	}
 
 }
