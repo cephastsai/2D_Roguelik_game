@@ -41,7 +41,7 @@ namespace Completed
 		private List <Vector3> gridPositions = new List <Vector3> ();	//A list of possible locations to place tiles.
 		//private Sprite Grave = null;
 		//public GameObject Grave;	
-		private GameObject[] rune = null;
+		private GameObject[] rune = new GameObject[10];
 		
 		//Clears our list gridPositions and prepares it to generate a new board.
 		void InitialiseList ()
@@ -94,7 +94,12 @@ namespace Completed
 			for(int i =0;i<10;i++){
 				if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
 				print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
-				//rune[i] = new GameObject 
+				rune[i] = new GameObject ("rune" + i.ToString());
+				rune[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));
+				//rune[i].transform.SetParent (boardHolder);
+				rune[i].transform.position = new Vector3(2,2,-1);
+				rune[i].AddComponent<BoxCollider2D>().size = new Vector2(1,1);
+
 
 				//Instantiate(Grave, new Vector3(InformationReaderCs.runeinfo[level,3*i], InformationReaderCs.runeinfo[level,3*i+1], -1), Quaternion.identity);
 				//print(i +":"+InformationReaderCs.runeinfo[level,i]);
