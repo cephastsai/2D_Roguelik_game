@@ -40,7 +40,7 @@ public class RuneManagerCs : MonoBehaviour {
             GameObject RuneRandom = new GameObject("RuneRandom");
             RuneRandom.AddComponent<MeshRenderer>();
             RuneRandom.AddComponent<MeshFilter>();
-            RuneRandom.AddComponent<SetRuneMaterial>().init(K);
+            RuneRandom.AddComponent<SetRuneMaterial>().init(K); //test
 
             print(j);//顯示擁有幾個符文
             print(ListNo[K]); //隨機產生數字
