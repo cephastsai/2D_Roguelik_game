@@ -23,7 +23,10 @@ public class RuneManagerCs : MonoBehaviour {
 	private String RuneList;
 	private int K = 0;
 
-	void OnGUI() {
+    private Renderer Rend = null;
+    private Material Mat = null;
+
+    void OnGUI() {
 		GUI.skin = RandomSkin;
 		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage)&&CheckPoint==0)
 		{
@@ -35,12 +38,31 @@ public class RuneManagerCs : MonoBehaviour {
 					//K = new int(Random.Range(1,j));
 				}
 			}
-            K = UnityEngine.Random.Range(0, j);
-			print(j);//顯示擁有幾個符文
+            K = UnityEngine.Random.Range(1, j);
+
+            GameObject RuneRandom = new GameObject("RuneRandom");
+            RuneRandom.GetComponent("BoardManager");
+
+            //init(K);
+
+            print(j);//顯示擁有幾個符文
             print(ListNo[K]); //隨機產生數字
-		}
+        }
 		
 	}
+
+    void init(int runeID)
+    {
+        
+        Rend = GetComponent<Renderer>();
+        //runeID++;
+        Mat = (Material)Resources.Load("Material/GlowRune " + runeID.ToString(), typeof(Material));
+        Rend.sharedMaterial = Mat;
+        Mat.shader = Shader.Find("Glow 11/Unity/Particles/Alpha Blended");
+        Mat.mainTexture = (Texture)Resources.Load("Image/rune" + runeID.ToString(), typeof(Texture));
+        gameObject.AddComponent<ColorChanger>();
+    }
+
     // Use this for initialization
     void Start () {
 		ButtonImage = (Texture2D)Resources.Load("Image/Random");
