@@ -62,18 +62,19 @@ namespace Completed
             //Assign enemies to a new List of Enemy objects.
             enemies = new List<Enemy>();
 
+			gameObject.AddComponent<InformationReaderCs>();
+
+			InformationReaderCs.load();
+
             //Get a component reference to the attached BoardManager script
             boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level 
             InitGame();
-
-			gameObject.AddComponent<InformationReaderCs>();
             		 
         }
 
 		void Start(){
-			InformationReaderCs.load();
 
 		}
 
