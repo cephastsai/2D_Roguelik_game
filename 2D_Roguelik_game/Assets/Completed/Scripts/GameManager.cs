@@ -43,38 +43,57 @@ namespace Completed
         void Awake()
 		{
 			Debug.Log ("Awake");
-            
-            //Check if instance already exists
-            if (instance == null)
+            {
+                //Check if instance already exists
+                if (instance == null)
 
-                //if not, set instance to this
-                instance = this;
+                    //if not, set instance to this
+                    instance = this;
 
-            //If instance already exists and it's not this:
-            else if (instance != this){
+                //If instance already exists and it's not this:
+                else if (instance != this){
 
-                //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-				Destroy(gameObject);
-			}
-            //Sets this to not be destroyed when reloading scene
-            DontDestroyOnLoad(gameObject);
+                    //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+					Destroy(gameObject);
+				}
+                //Sets this to not be destroyed when reloading scene
+                DontDestroyOnLoad(gameObject);
 
-            //Assign enemies to a new List of Enemy objects.
-            enemies = new List<Enemy>();
+                //Assign enemies to a new List of Enemy objects.
+                enemies = new List<Enemy>();
 
-            //Get a component reference to the attached BoardManager script
-            boardScript = GetComponent<BoardManager>();
+                //Get a component reference to the attached BoardManager script
+                boardScript = GetComponent<BoardManager>();
 
-            //Call the InitGame function to initialize the first level 
-            InitGame();
-
-			gameObject.AddComponent<InformationReaderCs>();
-            		 
+                //Call the InitGame function to initialize the first level 
+                InitGame();
+            }
+			/*
+            //檔案讀取
+            theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
+            StreamReader = theSourceFile.OpenText();
+            if (text != null)
+            {
+                //ReadToEnd:可以將文件從頭讀到尾
+                //ReadLine:只可讀取文件的一行文字
+                text = StreamReader.ReadToEnd();
+                string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
+                int i = 0;
+                while (i < textTemp.Length)
+                {
+                    string[] temp = null;
+                    temp = textTemp[i].Split(new char[] { '-' }); //"-"為每次死亡所存取的數值區格
+                    Debug.Log(temp[0]); //死亡次數
+                    Debug.Log(temp[1]); //死亡關卡
+                    Debug.Log(temp[2]); //死亡的x座標
+                    Debug.Log(temp[3]); //死亡的y座標
+                    i++;
+                }
+            }
+			 */			 
         }
 
 		void Start(){
-			InformationReaderCs.load();
-			/*
 			//檔案讀取
 			theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
 			StreamReader = theSourceFile.OpenText();
@@ -95,7 +114,7 @@ namespace Completed
 					Debug.Log(temp[3]); //死亡的y座標
 					i++;
 				}
-			}*/
+			}
 
 		}
 
