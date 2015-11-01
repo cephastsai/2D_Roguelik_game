@@ -5,9 +5,9 @@ using System.IO;
 using UnityEngine.UI;
 
 public class RuneManagerCs : MonoBehaviour {
-
-	public Texture2D ButtonImage = null;
-	public GUISkin RandomSkin = null;
+	private Animator plane;
+	private Texture2D ButtonImage = null;
+	private GUISkin RandomSkin = null;
 
 	private GameObject canvas = null;
 	private GameObject grid = null;
@@ -28,6 +28,7 @@ public class RuneManagerCs : MonoBehaviour {
 		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage)&&CheckPoint==0)
 		{
 			CheckPoint +=1;
+			plane.SetBool("Idle", false);
 			for(int temp=0;temp<grid.transform.childCount;temp++){
 				if (RuneList [temp] == '1'){
 					ListNo[j] = temp;
@@ -42,7 +43,7 @@ public class RuneManagerCs : MonoBehaviour {
             RuneRandom.AddComponent<MeshFilter>();
             RuneRandom.AddComponent<SetRuneMaterial>().init(K); //test
 
-            print(j);//顯示擁有幾個符文
+          //  print(j);//顯示擁有幾個符文
             print(ListNo[K]); //隨機產生數字
         }
 		
@@ -50,6 +51,7 @@ public class RuneManagerCs : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		plane = GameObject.Find("plane").GetComponent<Animator>();
 		ButtonImage = (Texture2D)Resources.Load("Image/Random");
 		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
 		//find gameobject "gird"
