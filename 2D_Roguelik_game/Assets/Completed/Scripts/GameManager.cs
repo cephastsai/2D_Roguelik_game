@@ -74,28 +74,6 @@ namespace Completed
 
 		void Start(){
 			InformationReaderCs.load();
-			/*
-			//檔案讀取
-			theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
-			StreamReader = theSourceFile.OpenText();
-			if (text != null)
-			{
-				//ReadToEnd:可以將文件從頭讀到尾
-				//ReadLine:只可讀取文件的一行文字
-				text = StreamReader.ReadToEnd();
-				string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
-				int i = 0;
-				while (i < textTemp.Length)
-				{
-					string[] temp = null;
-					temp = textTemp[i].Split(new char[] { '-' }); //"-"為每次死亡所存取的數值區格
-					Debug.Log(temp[0]); //死亡次數
-					Debug.Log(temp[1]); //死亡關卡
-					Debug.Log(temp[2]); //死亡的x座標
-					Debug.Log(temp[3]); //死亡的y座標
-					i++;
-				}
-			}*/
 
 		}
 
@@ -108,6 +86,7 @@ namespace Completed
             {
                 //Add one to our level number.
                 level++;
+
                 //Call InitGame to initialize our level.
                 InitGame();
             }
@@ -184,6 +163,9 @@ namespace Completed
             //levelText.text = "After " + level + " days, you starved.";
             //maxpointText.text = "Max point: " + playerMaxFoodPoint;
 
+
+			//InformationReaderCs.SaveFile(level,(int)player.transform.position.x,(int)player.transform.position.y,0);
+
             //Enable black background image gameObject.
             levelImage.SetActive(true);
 			
@@ -239,6 +221,11 @@ namespace Completed
 			
 			//Enemies are done moving, set enemiesMoving to false.
 			enemiesMoving = false;
+		}
+
+		public int getlevel(){
+			print(level);
+			return level;
 		}
 	}
 }

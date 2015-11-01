@@ -13,16 +13,18 @@ public class InformationReaderCs : MonoBehaviour {
 	public static string text = " ";
 	public static int[,] runeinfo = new int[20,20];
 	//public static string[] temp
+	//public static GameObject player = null;
+	//public static int RuneID = 0,rPosX,PosY,level = 0;
 
 	// Use this for initialization
 	void Start () {
-
+		//player = GameObject.Find("Player");
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 
@@ -48,17 +50,17 @@ public class InformationReaderCs : MonoBehaviour {
 		streamReader.Close ();
 
 	}
-
-	public static void SaveFile(){
+	//int level,int posX,int posY,int runeID
+	public static void SaveFile(int level,int posX,int posY,int runeID){
 		//print(text);
 
 		StreamWriter writer = new StreamWriter("Assets/Completed/Resources/test.txt");
 
-		text = text +";2,3,4,5";
+		print(level +","+ posX +","+ posY+","+runeID);
+		text = text +";"+ level.ToString() +","+ posX.ToString() +","+ posY.ToString() +","+runeID.ToString();
 		writer.Write(text);
 		writer.Close();
 		writer.Dispose();
-
 	}
 
 	public static void LoadRuneInfo(string[] Info_str){

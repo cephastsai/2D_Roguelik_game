@@ -26,7 +26,6 @@ namespace Completed
         private int maxFood;
 		private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
 		
-		
 		//Start overrides the Start function of MovingObject
 		protected override void Start ()
 		{
@@ -283,7 +282,8 @@ namespace Completed
 			//Check if food point total is less than or equal to zero.
 			if (food <= 0) 
 			{
-				InformationReaderCs.SaveFile();
+				//0,(int)transform.position.x,(int)transform.position.y,0
+				InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,0);
 				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
 				SoundManager.instance.PlaySingle (gameOverSound);
 				
@@ -297,6 +297,7 @@ namespace Completed
                 maxfoodText.text = "";
             }
 		}
+		
 	}
 }
 
