@@ -32,7 +32,8 @@ public class InformationReaderCs : MonoBehaviour {
 
 
 		//檔案讀取
-		theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
+		//theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
+		theSourceFile = new FileInfo("test.txt");
 		streamReader = theSourceFile.OpenText();
 
 		if (text != null)
@@ -54,7 +55,7 @@ public class InformationReaderCs : MonoBehaviour {
 	public static void SaveFile(int level,int posX,int posY,int runeID){
 		//print(text);
 
-		StreamWriter writer = new StreamWriter("Assets/Completed/Resources/test.txt");
+		StreamWriter writer = new StreamWriter("test.txt");
 
 		//print(level +","+ posX +","+ posY+","+runeID);
 		text = text +";"+ level.ToString() +","+ posX.ToString() +","+ posY.ToString() +","+runeID.ToString();
