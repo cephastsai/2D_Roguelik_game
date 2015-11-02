@@ -79,7 +79,7 @@ public class RuneManagerCs : MonoBehaviour {
         }*/
 
         //讀取檔案
-        theSourceFile = new FileInfo("Assets/Completed/Resources/rune.txt");
+        theSourceFile = new FileInfo("rune.txt");
         StreamReader = theSourceFile.OpenText();
         if (text != null)
         {
