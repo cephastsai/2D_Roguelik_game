@@ -23,6 +23,13 @@ public class RuneManagerCs : MonoBehaviour {
 	private String RuneList;
 	private int K = 0;
 
+	void Awake(){
+		ButtonImage = (Texture2D)Resources.Load("Image/Random");
+		//plane = GameObject.Find("plane").GetComponent<Animator>();
+		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
+
+	}
+
     void OnGUI() {
 		GUI.skin = RandomSkin;
 		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage)&&CheckPoint==0)
@@ -51,10 +58,8 @@ public class RuneManagerCs : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		ButtonImage = (Texture2D)Resources.Load("Image/Random");
-		plane = GameObject.Find("plane").GetComponent<Animator>();
-		//ButtonImage = (Texture2D)Resources.Load("Image/Random");
-		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
+
+
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
 		grid = canvas.transform.GetChild(1).GetChild(0).gameObject;
@@ -80,12 +85,12 @@ public class RuneManagerCs : MonoBehaviour {
         {
             text = StreamReader.ReadToEnd();
             RuneList = text;
-            Debug.Log("test:" + RuneList);
+            //Debug.Log("test:" + RuneList);
         }
 
 		// add component "SetRuneMaterial" ,all child
 		for(int temp=0;temp<grid.transform.childCount;temp++){
-			print(RuneList[temp]);
+			//print(RuneList[temp]);
 			if (RuneList [temp] == '1'){
 				grid.transform.GetChild(temp).gameObject.AddComponent<SetRuneMaterial>().init(temp+1);
 			}
