@@ -51,8 +51,9 @@ public class RuneManagerCs : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		plane = GameObject.Find("plane").GetComponent<Animator>();
 		ButtonImage = (Texture2D)Resources.Load("Image/Random");
+		plane = GameObject.Find("plane").GetComponent<Animator>();
+		//ButtonImage = (Texture2D)Resources.Load("Image/Random");
 		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
