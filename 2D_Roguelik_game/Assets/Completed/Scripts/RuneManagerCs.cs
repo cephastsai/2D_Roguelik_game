@@ -35,7 +35,7 @@ public class RuneManagerCs : MonoBehaviour {
 		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage)&&CheckPoint==0)
 		{
 			CheckPoint +=1;
-			plane.SetBool("Idle", false);
+			//plane.SetBool("Idle", false);
 			for(int temp=0;temp<grid.transform.childCount;temp++){
 				if (RuneList [temp] == '1'){
 					ListNo[j] = temp;
