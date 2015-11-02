@@ -225,7 +225,6 @@ namespace Completed
 		}
 
 		public int getlevel(){
-			print(level);
 			return level;
 		}
 	}

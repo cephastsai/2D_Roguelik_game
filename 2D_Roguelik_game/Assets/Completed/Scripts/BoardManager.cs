@@ -96,13 +96,9 @@ namespace Completed
 				print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
 				rune[i] = new GameObject ("rune" + i.ToString());
 				rune[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));
-				//rune[i].transform.SetParent (boardHolder);
-				rune[i].transform.position = new Vector3(2,2,-1);
+				rune[i].transform.position = new Vector3(InformationReaderCs.runeinfo[level,3*i],InformationReaderCs.runeinfo[level,3*i+1],0f);
 				rune[i].AddComponent<BoxCollider2D>().size = new Vector2(1,1);
-
-
-				//Instantiate(Grave, new Vector3(InformationReaderCs.runeinfo[level,3*i], InformationReaderCs.runeinfo[level,3*i+1], -1), Quaternion.identity);
-				//print(i +":"+InformationReaderCs.runeinfo[level,i]);
+				rune[i].GetComponent<SpriteRenderer>().sortingLayerName = "Rune";
 
 			}
 		}
