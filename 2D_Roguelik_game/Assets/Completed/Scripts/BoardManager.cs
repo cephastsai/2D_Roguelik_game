@@ -39,8 +39,6 @@ namespace Completed
 		
 		private Transform boardHolder;									//A variable to store a reference to the transform of our Board object.
 		private List <Vector3> gridPositions = new List <Vector3> ();	//A list of possible locations to place tiles.
-		//private Sprite Grave = null;
-		//public GameObject Grave;	
 		private GameObject[] rune = new GameObject[10];
 		
 		//Clears our list gridPositions and prepares it to generate a new board.
@@ -95,10 +93,14 @@ namespace Completed
 				if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
 				print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
 				rune[i] = new GameObject ("rune" + i.ToString());
-				rune[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));
+				rune[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));			
 				rune[i].transform.position = new Vector3(InformationReaderCs.runeinfo[level,3*i],InformationReaderCs.runeinfo[level,3*i+1],0f);
 				rune[i].AddComponent<BoxCollider2D>().size = new Vector2(1,1);
 				rune[i].GetComponent<SpriteRenderer>().sortingLayerName = "Rune";
+				print(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
+				int runePosID = 6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1;
+				if(runePosID >0)
+					gridPositions.RemoveAt(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
 
 			}
 		}
@@ -112,6 +114,8 @@ namespace Completed
 			
 			//Declare a variable of type Vector3 called randomPosition, set it's value to the entry at randomIndex from our List gridPositions.
 			Vector3 randomPosition = gridPositions[randomIndex];
+
+			//print(randomIndex+":"+randomPosition);
 			
 			//Remove the entry at randomIndex from the list so that it can't be re-used.
 			gridPositions.RemoveAt (randomIndex);
@@ -144,13 +148,13 @@ namespace Completed
 		
 		//SetupScene initializes our level and calls the previous functions to lay out the game board
 		public void SetupScene (int level)
-		{
-			//Creates the outer walls and floor.
-			BoardSetup ();
-			
+		{	
 			//Reset our list of gridpositions.
 			InitialiseList ();
-			
+
+			//Creates the outer walls and floor.
+			BoardSetup ();			
+
 			//Instantiate a random number of wall tiles based on minimum and maximum, at randomized positions.
 			LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
 			
@@ -165,6 +169,9 @@ namespace Completed
 			
 			//Instantiate the exit tile in the upper right hand corner of our game board
 			Instantiate (exit, new Vector3 (columns - 1, rows - 1, 0f), Quaternion.identity);
+
+			//for(int i=0;i<gridPositions.Count;i++)
+				//print(i+":"+gridPositions[i]);
 		}
 	}
 }
