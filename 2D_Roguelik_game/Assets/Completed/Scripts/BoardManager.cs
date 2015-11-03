@@ -41,6 +41,7 @@ namespace Completed
 		private List <Vector3> gridPositions = new List <Vector3> ();	//A list of possible locations to place tiles.
 		private GameObject[] rune = new GameObject[10];
 		private GameObject[] runesprite = new GameObject[10];
+		private GameObject CurrentRuneUI = null;
 		
 		//Clears our list gridPositions and prepares it to generate a new board.
 		void InitialiseList ()
@@ -114,6 +115,16 @@ namespace Completed
 				runesprite[i].transform.SetParent(rune[i].transform);
 
 			}
+
+			//show current rune
+			print(SceneManager.CurrentRuneID);
+			CurrentRuneUI = new GameObject ("CurrentRune");
+			CurrentRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
+			//CurrentRuneUI.AddComponent<MeshRenderer>();
+			//CurrentRuneUI.AddComponent<MeshFilter>();
+			//CurrentRuneUI.AddComponent<SetRuneMaterial>().init(SceneManager.CurrentRuneID);
+			CurrentRuneUI.transform.localScale = new Vector3(0.4f,0.4f,1);
+			CurrentRuneUI.transform.position = new Vector3(-2,5,0);
 		}
 		
 		

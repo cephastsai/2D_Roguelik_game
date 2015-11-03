@@ -38,7 +38,7 @@ namespace Completed
         private FileInfo theSourceFile = null;
         private StreamReader StreamReader = null;
         private string text = " ";
-		private GameObject CurrentRuneUI = null;
+
 
 
         //Awake is always called before any Start functions
@@ -72,15 +72,7 @@ namespace Completed
             boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level 
-            InitGame();
-
-			print(SceneManager.CurrentRuneID);
-			CurrentRuneUI = new GameObject ("CurrentRune");
-			CurrentRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
-			//CurrentRuneUI.AddComponent<MeshRenderer>();
-			//CurrentRuneUI.AddComponent<MeshFilter>();
-			//CurrentRuneUI.AddComponent<SetRuneMaterial>().init(SceneManager.CurrentRuneID);
-			CurrentRuneUI.transform.position = new Vector3(-4,5,0);
+            InitGame();					
             		 
         }
 

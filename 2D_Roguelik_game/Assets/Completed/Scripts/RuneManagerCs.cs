@@ -54,6 +54,8 @@ public class RuneManagerCs : MonoBehaviour {
             print("RandomNum:" + ListNo[K]); //隨機產生數字
 
 			SceneManager.CurrentRuneID = K;
+
+			Application.LoadLevel("Main");
         }
 		
 	}
