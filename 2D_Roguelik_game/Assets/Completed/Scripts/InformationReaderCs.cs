@@ -12,13 +12,9 @@ public class InformationReaderCs : MonoBehaviour {
 	public static StreamWriter streamWriter = null;
 	public static string text = " ";
 	public static int[,] runeinfo = new int[20,20];
-	//public static string[] temp
-	//public static GameObject player = null;
-	//public static int RuneID = 0,rPosX,PosY,level = 0;
 
 	// Use this for initialization
 	void Start () {
-		//player = GameObject.Find("Player");
 
 	}
 	
@@ -32,7 +28,6 @@ public class InformationReaderCs : MonoBehaviour {
 
 
 		//檔案讀取
-		//theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
 		theSourceFile = new FileInfo("test.txt");
 		streamReader = theSourceFile.OpenText();
 

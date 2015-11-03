@@ -21,7 +21,7 @@ public class RuneManagerCs : MonoBehaviour {
 	private int CheckPoint = 0;//作為點選隨機按鈕的區隔數
     //private String[] RuneList = new String[50];
 	private String RuneList;
-	private int K = 0;
+	public static int K = 0;
 
 	void Awake(){
 		ButtonImage = (Texture2D)Resources.Load("Image/Random");
@@ -51,7 +51,9 @@ public class RuneManagerCs : MonoBehaviour {
             RuneRandom.AddComponent<SetRuneMaterial>().init(K); //test
 
           //  print(j);//顯示擁有幾個符文
-            print(ListNo[K]); //隨機產生數字
+            print("RandomNum:" + ListNo[K]); //隨機產生數字
+
+			SceneManager.CurrentRuneID = K;
         }
 		
 	}
@@ -99,9 +101,4 @@ public class RuneManagerCs : MonoBehaviour {
 			}
 		}
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

@@ -247,6 +247,9 @@ namespace Completed
 				//Disable the soda object the player collided with.
 				other.gameObject.SetActive (false);
 			}
+			else if(other.tag == "Rune"){
+				other.gameObject.SetActive (false);
+			}
 		}
 		
 		
@@ -283,7 +286,7 @@ namespace Completed
 			if (food <= 0) 
 			{
 				//0,(int)transform.position.x,(int)transform.position.y,0
-				InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,0);
+				InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,RuneManagerCs.K);
 				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
 				SoundManager.instance.PlaySingle (gameOverSound);
 				

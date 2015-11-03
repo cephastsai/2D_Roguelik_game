@@ -96,7 +96,9 @@ namespace Completed
 				rune[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));			
 				rune[i].transform.position = new Vector3(InformationReaderCs.runeinfo[level,3*i],InformationReaderCs.runeinfo[level,3*i+1],0f);
 				rune[i].AddComponent<BoxCollider2D>().size = new Vector2(1,1);
+				rune[i].GetComponent<BoxCollider2D>().isTrigger = true;
 				rune[i].GetComponent<SpriteRenderer>().sortingLayerName = "Rune";
+				rune[i].tag = "Rune";
 				print(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
 				int runePosID = 6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1;
 				if(runePosID >0)
