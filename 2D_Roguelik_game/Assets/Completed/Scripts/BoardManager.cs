@@ -40,6 +40,7 @@ namespace Completed
 		private Transform boardHolder;									//A variable to store a reference to the transform of our Board object.
 		private List <Vector3> gridPositions = new List <Vector3> ();	//A list of possible locations to place tiles.
 		private GameObject[] rune = new GameObject[10];
+		private GameObject[] runesprite = new GameObject[10];
 		
 		//Clears our list gridPositions and prepares it to generate a new board.
 		void InitialiseList ()
@@ -88,6 +89,7 @@ namespace Completed
 					instance.transform.SetParent (boardHolder);
 				}
 			}
+			// set rune
 			int level = GameManager.instance.getlevel();
 			for(int i =0;i<10;i++){
 				if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
@@ -103,6 +105,13 @@ namespace Completed
 				int runePosID = 6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1;
 				if(runePosID >0)
 					gridPositions.RemoveAt(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
+
+				runesprite[i] = new GameObject ("runesprite" + i.ToString());
+				runesprite[i].transform.position = new Vector3(rune[i].transform.position.x,rune[i].transform.position.y,-1);
+				runesprite[i].transform.localScale = new Vector3(0.2f,0.2f,1);
+				runesprite[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune" + InformationReaderCs.runeinfo[level,3*i+2].ToString(),typeof(Sprite));
+				runesprite[i].GetComponent<SpriteRenderer>().sortingLayerName = "RuneSprite";
+				runesprite[i].transform.SetParent(rune[i].transform);
 
 			}
 		}
