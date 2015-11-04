@@ -50,7 +50,6 @@ public class RuneManagerCs : MonoBehaviour {
             RuneRandom.AddComponent<MeshFilter>();
             RuneRandom.AddComponent<SetRuneMaterial>().init(K); //test
 
-          //  print(j);//顯示擁有幾個符文
             print("RandomNum:" + ListNo[K]); //隨機產生數字
 
 			SceneManager.CurrentRuneID = K;
