@@ -44,7 +44,7 @@ namespace Completed
         //Awake is always called before any Start functions
         void Awake()
 		{
-			Debug.Log ("Awake");
+			//Debug.Log ("Awake");
             
             //Check if instance already exists
             if (instance == null)
@@ -84,7 +84,7 @@ namespace Completed
 		//This is called each time a scene is loaded.
 		void OnLevelWasLoaded(int index) //當場景載入就不會執行(loader>gamemanager)
 		{
-			print(SceneManager.menu_flag);
+			//print(SceneManager.menu_flag);
             if (SceneManager.menu_flag == false)
             {
                 //Add one to our level number.

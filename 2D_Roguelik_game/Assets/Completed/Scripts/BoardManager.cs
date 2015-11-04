@@ -94,7 +94,7 @@ namespace Completed
 			int level = GameManager.instance.getlevel();
 			for(int i =0;i<10;i++){
 				if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
-				print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
+				//print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
 				rune[i] = new GameObject ("rune" + i.ToString());
 				rune[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));			
 				rune[i].transform.position = new Vector3(InformationReaderCs.runeinfo[level,3*i],InformationReaderCs.runeinfo[level,3*i+1],0f);
@@ -102,7 +102,7 @@ namespace Completed
 				rune[i].GetComponent<BoxCollider2D>().isTrigger = true;
 				rune[i].GetComponent<SpriteRenderer>().sortingLayerName = "Rune";
 				rune[i].tag = "Rune";
-				print(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
+				//print(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
 				int runePosID = 6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1;
 				if(runePosID >0)
 					gridPositions.RemoveAt(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
@@ -117,7 +117,7 @@ namespace Completed
 			}
 
 			//show current rune
-			print(SceneManager.CurrentRuneID);
+			//print(SceneManager.CurrentRuneID);
 			CurrentRuneUI = new GameObject ("CurrentRune");
 			CurrentRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
 			//CurrentRuneUI.AddComponent<MeshRenderer>();

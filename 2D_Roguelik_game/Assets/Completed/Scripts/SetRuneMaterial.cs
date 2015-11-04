@@ -18,7 +18,6 @@ public class SetRuneMaterial : MonoBehaviour {
 
 	public void init(int runeID){
 	
-		print(runeID);
 		//get Render
 		Rend = GetComponent<Renderer>();
 
