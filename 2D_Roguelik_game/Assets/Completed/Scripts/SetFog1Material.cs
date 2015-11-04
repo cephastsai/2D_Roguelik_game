@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class SetFog2Material : MonoBehaviour {
-	public Renderer Rend = null;
+	//public Renderer Rend = null;
 	public Material Mat = null;
 	// Use this for initialization
 	void Start () {
-		Rend = GetComponent<Renderer>();
+		//Rend = GetComponent<Renderer>();
 		Mat = (Material)Resources.Load("Material/Fog1",typeof(Material));
-		Rend.sharedMaterial = Mat;
+		//Rend.sharedMaterial = Mat;
 		Mat.shader = Shader.Find("Particles/Additive");
 		Mat.mainTexture = (Texture)Resources.Load("Image/Fog01",typeof(Texture));
 
