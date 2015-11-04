@@ -39,82 +39,44 @@ namespace Completed
         private StreamReader StreamReader = null;
         private string text = " ";
 
+
+
         //Awake is always called before any Start functions
         void Awake()
 		{
-			Debug.Log ("Awake");
-            {
-                //Check if instance already exists
-                if (instance == null)
+			//Debug.Log ("Awake");
+            
+            //Check if instance already exists
+            if (instance == null)
 
-                    //if not, set instance to this
-                    instance = this;
+                //if not, set instance to this
+                instance = this;
 
-                //If instance already exists and it's not this:
-                else if (instance != this){
+            //If instance already exists and it's not this:
+            else if (instance != this){
 
-                    //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-					Destroy(gameObject);
-				}
-                //Sets this to not be destroyed when reloading scene
-                DontDestroyOnLoad(gameObject);
+                //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+				Destroy(gameObject);
+			}
+            //Sets this to not be destroyed when reloading scene
+            DontDestroyOnLoad(gameObject);
 
-                //Assign enemies to a new List of Enemy objects.
-                enemies = new List<Enemy>();
+            //Assign enemies to a new List of Enemy objects.
+            enemies = new List<Enemy>();
 
-                //Get a component reference to the attached BoardManager script
-                boardScript = GetComponent<BoardManager>();
+			gameObject.AddComponent<InformationReaderCs>();
 
-                //Call the InitGame function to initialize the first level 
-                InitGame();
-            }
-			/*
-            //檔案讀取
-            theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
-            StreamReader = theSourceFile.OpenText();
-            if (text != null)
-            {
-                //ReadToEnd:可以將文件從頭讀到尾
-                //ReadLine:只可讀取文件的一行文字
-                text = StreamReader.ReadToEnd();
-                string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
-                int i = 0;
-                while (i < textTemp.Length)
-                {
-                    string[] temp = null;
-                    temp = textTemp[i].Split(new char[] { '-' }); //"-"為每次死亡所存取的數值區格
-                    Debug.Log(temp[0]); //死亡次數
-                    Debug.Log(temp[1]); //死亡關卡
-                    Debug.Log(temp[2]); //死亡的x座標
-                    Debug.Log(temp[3]); //死亡的y座標
-                    i++;
-                }
-            }
-			 */			 
+			InformationReaderCs.load();
+
+            //Get a component reference to the attached BoardManager script
+            boardScript = GetComponent<BoardManager>();
+
+            //Call the InitGame function to initialize the first level 
+            InitGame();					
+            		 
         }
 
 		void Start(){
-			//檔案讀取
-			theSourceFile = new FileInfo("Assets/Completed/Resources/test.txt");
-			StreamReader = theSourceFile.OpenText();
-			if (text != null)
-			{
-				//ReadToEnd:可以將文件從頭讀到尾
-				//ReadLine:只可讀取文件的一行文字
-				text = StreamReader.ReadToEnd();
-				string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
-				int i = 0;
-				while (i < textTemp.Length)
-				{
-					string[] temp = null;
-					temp = textTemp[i].Split(new char[] { '-' }); //"-"為每次死亡所存取的數值區格
-					Debug.Log(temp[0]); //死亡次數
-					Debug.Log(temp[1]); //死亡關卡
-					Debug.Log(temp[2]); //死亡的x座標
-					Debug.Log(temp[3]); //死亡的y座標
-					i++;
-				}
-			}
 
 		}
 
@@ -122,11 +84,12 @@ namespace Completed
 		//This is called each time a scene is loaded.
 		void OnLevelWasLoaded(int index) //當場景載入就不會執行(loader>gamemanager)
 		{
-			print(SceneManager.menu_flag);
+			//print(SceneManager.menu_flag);
             if (SceneManager.menu_flag == false)
             {
                 //Add one to our level number.
                 level++;
+
                 //Call InitGame to initialize our level.
                 InitGame();
             }
@@ -203,6 +166,9 @@ namespace Completed
             //levelText.text = "After " + level + " days, you starved.";
             //maxpointText.text = "Max point: " + playerMaxFoodPoint;
 
+
+			//InformationReaderCs.SaveFile(level,(int)player.transform.position.x,(int)player.transform.position.y,0);
+
             //Enable black background image gameObject.
             levelImage.SetActive(true);
 			
@@ -258,6 +224,10 @@ namespace Completed
 			
 			//Enemies are done moving, set enemiesMoving to false.
 			enemiesMoving = false;
+		}
+
+		public int getlevel(){
+			return level;
 		}
 	}
 }

@@ -26,7 +26,6 @@ namespace Completed
         private int maxFood;
 		private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
 		
-		
 		//Start overrides the Start function of MovingObject
 		protected override void Start ()
 		{
@@ -248,6 +247,9 @@ namespace Completed
 				//Disable the soda object the player collided with.
 				other.gameObject.SetActive (false);
 			}
+			else if(other.tag == "Rune"){
+				other.gameObject.SetActive (false);
+			}
 		}
 		
 		
@@ -283,6 +285,8 @@ namespace Completed
 			//Check if food point total is less than or equal to zero.
 			if (food <= 0) 
 			{
+				//0,(int)transform.position.x,(int)transform.position.y,0
+				InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,RuneManagerCs.K);
 				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
 				SoundManager.instance.PlaySingle (gameOverSound);
 				
@@ -296,6 +300,7 @@ namespace Completed
                 maxfoodText.text = "";
             }
 		}
+		
 	}
 }
 
