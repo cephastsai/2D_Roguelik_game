@@ -22,6 +22,7 @@ public class RuneManagerCs : MonoBehaviour {
     //private String[] RuneList = new String[50];
 	private String RuneList;
 	public static int K = 0;
+    private int RuneCount = 0; 
 
 	void Awake(){
 		ButtonImage = (Texture2D)Resources.Load("Image/Random");
@@ -96,10 +97,12 @@ public class RuneManagerCs : MonoBehaviour {
 			//print(RuneList[temp]);
 			if (RuneList [temp] == '1'){
 				grid.transform.GetChild(temp).gameObject.AddComponent<SetRuneMaterial>().init(temp+1);
+                RuneCount++;
 			}
 			else if (RuneList [temp] == '0'){
 				grid.transform.GetChild(temp).gameObject.AddComponent<SetNullRuneMaterial>().init(temp+1);
 			}
 		}
+        PlayerPrefs.SetInt("RuneCount", RuneCount);
     }
 }
