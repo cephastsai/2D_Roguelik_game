@@ -12,7 +12,6 @@ public class InformationReaderCs : MonoBehaviour {
 	public static StreamWriter streamWriter = null;
 	public static string text = " ";
 	public static int[,] runeinfo = new int[20,20];
-    public static int DieCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -32,16 +31,7 @@ public class InformationReaderCs : MonoBehaviour {
 		theSourceFile = new FileInfo("test.txt");
 		streamReader = theSourceFile.OpenText();
 
-        /*for (int temp = 0; temp < text.Length; temp++)
-        {
-            if (text[temp] == ';')
-            {
-                DieCount++;
-            }
-        }*/
-        //print("DieCount" + (DieCount + 1));
-
-        if (text != null)
+		if (text != null)
 		{
 			//ReadToEnd:可以將文件從頭讀到尾
 			//ReadLine:只可讀取文件的一行文字
@@ -93,18 +83,16 @@ public class InformationReaderCs : MonoBehaviour {
 					runeinfo[temp_int[0],w] 	=  temp_int[1];
 					runeinfo[temp_int[0],w+1]	=  temp_int[2];
 					runeinfo[temp_int[0],w+2] 	=  temp_int[3];
-                    DieCount++;
-                    break;
+					break;
 				}
 			}
 
 		}
-        /*
+		/*
 		for(int i = 0;i<20;i++)
 			for(int j = 0;j<20;j++)
 				print(i +","+ j +":" +runeinfo[i,j]);
 		*/
-        print("DieCount" + DieCount);
-    }
+	}
 
 }
