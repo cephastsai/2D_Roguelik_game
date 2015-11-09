@@ -91,7 +91,7 @@ namespace Completed
 					rend = instance.GetComponent<Renderer>();
 					rend.sharedMaterial = boardmat;
 					boardmat.shader = Shader.Find("Legacy Shaders/Diffuse");
-					
+
 					//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 					instance.transform.SetParent (boardHolder);
 				}
@@ -154,8 +154,9 @@ namespace Completed
 		
 		
 		//LayoutObjectAtRandom accepts an array of game objects to choose from along with a minimum and maximum range for the number of objects to create.
-		void LayoutObjectAtRandom (GameObject[] tileArray, int minimum, int maximum)
+		void LayoutObjectAtRandom (GameObject[] tileArray, int minimum, int maximum , bool addmat)
 		{
+			print(addmat);
 			//Choose a random number of objects to instantiate within the minimum and maximum limits
 			int objectCount = Random.Range (minimum, maximum+1);
 			
@@ -170,6 +171,13 @@ namespace Completed
 				
 				//Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
 				Instantiate(tileChoice, randomPosition, Quaternion.identity);
+				/*
+				if(addmat == true){
+					Renderer rend = null;
+					rend = tileChoice.GetComponent<Renderer>();
+					rend.sharedMaterial = boardmat;
+					boardmat.shader = Shader.Find("Legacy Shaders/Diffuse");
+				}*/
 			}
 		}
 		
@@ -184,16 +192,16 @@ namespace Completed
 			BoardSetup ();			
 
 			//Instantiate a random number of wall tiles based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
+			LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum, true);
 			
 			//Instantiate a random number of food tiles based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (foodTiles, foodCount.minimum, foodCount.maximum);
+			LayoutObjectAtRandom (foodTiles, foodCount.minimum, foodCount.maximum, false);
 			
 			//Determine number of enemies based on current level number, based on a logarithmic progression
 			int enemyCount = (int)Mathf.Log(level, 2f);
 			
 			//Instantiate a random number of enemies based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
+			LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount,false);
 			
 			//Instantiate the exit tile in the upper right hand corner of our game board
 			Instantiate (exit, new Vector3 (columns - 1, rows - 1, 0f), Quaternion.identity);
