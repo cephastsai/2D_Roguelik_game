@@ -42,6 +42,7 @@ namespace Completed
 		private GameObject[] rune = new GameObject[10];
 		private GameObject[] runesprite = new GameObject[10];
 		private GameObject CurrentRuneUI = null;
+		private Material boardmat = null;
 		
 		//Clears our list gridPositions and prepares it to generate a new board.
 		void InitialiseList ()
@@ -67,7 +68,7 @@ namespace Completed
 		{
 			//Instantiate Board and set boardHolder to its transform.
 			boardHolder = new GameObject ("Board").transform;
-			//Grave = (GameObject)Resources.Load("Grave",typeof(GameObject));
+			boardmat = (Material)Resources.Load("Material/BoardMat",typeof(Material));
 			
 			//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
 			for(int x = -1; x < columns + 1; x++)
@@ -85,6 +86,11 @@ namespace Completed
 					//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 					GameObject instance =
 						Instantiate (toInstantiate, new Vector3 (x, y, 0f), Quaternion.identity) as GameObject;
+
+					Renderer rend = null;
+					rend = instance.GetComponent<Renderer>();
+					rend.sharedMaterial = boardmat;
+					boardmat.shader = Shader.Find("Legacy Shaders/Diffuse");
 					
 					//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 					instance.transform.SetParent (boardHolder);
