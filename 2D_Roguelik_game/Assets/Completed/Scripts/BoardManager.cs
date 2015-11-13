@@ -171,13 +171,13 @@ namespace Completed
 				
 				//Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
 				Instantiate(tileChoice, randomPosition, Quaternion.identity);
-				/*
+
 				if(addmat == true){
 					Renderer rend = null;
 					rend = tileChoice.GetComponent<Renderer>();
 					rend.sharedMaterial = boardmat;
 					boardmat.shader = Shader.Find("Legacy Shaders/Diffuse");
-				}*/
+				}
 			}
 		}
 		
