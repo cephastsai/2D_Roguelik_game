@@ -26,14 +26,13 @@ public class RuneManagerCs : MonoBehaviour {
 
 	void Awake(){
 		ButtonImage = (Texture2D)Resources.Load("Image/Random");
-		//plane = GameObject.Find("plane").GetComponent<Animator>();
 		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
 
 	}
 
-    void OnGUI() {
-		GUI.skin = RandomSkin;
-		if (GUI.Button(new Rect(520, 160,ButtonImage.width,ButtonImage.height),ButtonImage)&&CheckPoint==0)
+	void OnGUI() {
+		//GUI.skin = RandomSkin;
+	if (GUILayout.Button("Start Game"))
 		{
 			CheckPoint +=1;
 			//plane.SetBool("Idle", false);
@@ -105,4 +104,5 @@ public class RuneManagerCs : MonoBehaviour {
 		}
         PlayerPrefs.SetInt("RuneCount", RuneCount);
     }
+
 }
