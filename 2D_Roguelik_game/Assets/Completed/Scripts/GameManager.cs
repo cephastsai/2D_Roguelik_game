@@ -101,7 +101,8 @@ namespace Completed
 		{
 			//While doingSetup is true the player can't move, prevent player from moving while title card is up.
 			doingSetup = true;
-			
+			//Player.runed = false;
+
 			//Get a reference to our image LevelImage by finding it by name.
 			levelImage = GameObject.Find("LevelImage");
 			//bug 001

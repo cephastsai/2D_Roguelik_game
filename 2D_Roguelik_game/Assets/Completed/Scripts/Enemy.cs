@@ -84,13 +84,14 @@ namespace Completed
 		{
 			//Declare hitPlayer and set it to equal the encountered component.
 			Player hitPlayer = component as Player;
-			
-			//Call the LoseFood function of hitPlayer passing it playerDamage, the amount of foodpoints to be subtracted.
-			hitPlayer.LoseFood (playerDamage);
-			
-			//Set the attack trigger of animator to trigger Enemy attack animation.
-			animator.SetTrigger ("enemyAttack");
-			
+
+			if(Player.runed == false){
+				//Call the LoseFood function of hitPlayer passing it playerDamage, the amount of foodpoints to be subtracted.
+				hitPlayer.LoseFood (playerDamage);
+				
+				//Set the attack trigger of animator to trigger Enemy attack animation.
+				animator.SetTrigger ("enemyAttack");
+			}
 			//Call the RandomizeSfx function of SoundManager passing in the two audio clips to choose randomly between.
 			SoundManager.instance.RandomizeSfx (attackSound1, attackSound2);
 		}
