@@ -19,6 +19,8 @@ public class SceneManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+		gameObject.AddComponent<Story>();
     }
 	
 	// Update is called once per frame

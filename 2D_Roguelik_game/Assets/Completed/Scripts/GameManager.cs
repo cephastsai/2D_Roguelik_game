@@ -90,9 +90,12 @@ namespace Completed
                 //Add one to our level number.
                 level++;
 
+				Story.Level = level;
                 //Call InitGame to initialize our level.
                 InitGame();
-            }
+			}else{
+				Story.Level = 1;
+			}
             SceneManager.menu_flag = false;
         }
 		

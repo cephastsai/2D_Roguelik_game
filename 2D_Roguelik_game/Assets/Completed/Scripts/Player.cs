@@ -42,6 +42,8 @@ namespace Completed
             maxfoodText.text = "Max: " + maxFood;
 			maxfoodText.transform.position = new Vector3(400,350,100);
 
+			Story.food = food;
+
 			if(runed == true){
 				pointsPerFood =  5;
 				pointsPerSoda =  10;
@@ -152,7 +154,8 @@ namespace Completed
 			
 			//Update food text display to reflect current score.
 			foodText.text = "Food: " + food;
-			
+
+			Story.food = food;
 			//Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
 			base.AttemptMove <T> (xDir, yDir);
 			
@@ -207,6 +210,7 @@ namespace Completed
 			{
 				//Add pointsPerFood to the players current food total.
 				food += pointsPerFood;
+				Story.food = food;
 
                 if (food > maxFood)
                 {
@@ -233,6 +237,7 @@ namespace Completed
 			{
 				//Add pointsPerSoda to players food points total
 				food += pointsPerSoda;
+				Story.food = food;
 
                 if (food > maxFood)
                 {
@@ -281,6 +286,7 @@ namespace Completed
 			
 			//Subtract lost food points from the players total.
 			food -= loss;
+			Story.food = food;
 			
 			//Update the food display with the new total.
 			foodText.text = "-"+ loss + " Food: " + food;
