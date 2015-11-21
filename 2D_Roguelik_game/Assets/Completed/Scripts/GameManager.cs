@@ -87,6 +87,8 @@ namespace Completed
 			//print(SceneManager.menu_flag);
             if (SceneManager.menu_flag == false)
             {
+				Story.textcolor.a = 1f;
+				Story.storyon = false;
                 //Add one to our level number.
                 level++;
 
@@ -94,6 +96,8 @@ namespace Completed
                 //Call InitGame to initialize our level.
                 InitGame();
 			}else{
+				Story.info_on = true;
+	
 				Story.Level = 1;
 			}
             SceneManager.menu_flag = false;
