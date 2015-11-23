@@ -67,11 +67,10 @@ public class RuneManagerCs : MonoBehaviour {
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
 		grid = canvas.transform.GetChild(1).GetChild(0).gameObject;
-
 		grid.transform.position = new Vector3(0,45,0);
 
-		// add component "SetRuneMaterial" ,all child
-		/*
+        // add component "SetRuneMaterial" ,all child
+        /*
 		for(int temp=0;temp<grid.transform.childCount;temp++){
 			print(RuneList[temp]);
 			if (RuneList [temp] == "1"){
@@ -104,6 +103,18 @@ public class RuneManagerCs : MonoBehaviour {
 			}
 		}
         PlayerPrefs.SetInt("RuneCount", RuneCount);
+    }
+
+    void Update()
+    {
+        if (grid.transform.position.x > 245)
+        {
+            grid.transform.position = new Vector3(245, 45, 0);
+        }
+        if(grid.transform.position.x <-125)
+        {
+            grid.transform.position = new Vector3(-125, 45, 0);
+        }
     }
 
 }
