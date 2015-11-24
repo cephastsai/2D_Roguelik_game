@@ -22,7 +22,11 @@ public class RuneManagerCs : MonoBehaviour {
     //private String[] RuneList = new String[50];
 	private String RuneList;
 	public static int K = 0;
-    private int RuneCount = 0; 
+    private int RuneCount = 0;
+
+    //按鈕設定
+    //private Texture StartGameButton = null;
+    private GameObject startRune;
 
 	void Awake(){
 		ButtonImage = (Texture2D)Resources.Load("Image/Random");
@@ -30,9 +34,10 @@ public class RuneManagerCs : MonoBehaviour {
 
 	}
 
-	void OnGUI() {
+	void OnGUI()
+    {
 		//GUI.skin = RandomSkin;
-	if (GUILayout.Button("Start Game"))
+	    /*if (GUILayout.Button("Start Game"))
 		{
 			CheckPoint +=1;
 			//plane.SetBool("Idle", false);
@@ -56,9 +61,43 @@ public class RuneManagerCs : MonoBehaviour {
 			Story.rune = K;
 
 			Application.LoadLevel("Main");
+        }*/
+
+        //點擊圖片按鈕測試
+        if (GUI.Button(new Rect(350, 180, ButtonImage.width, ButtonImage.height), ButtonImage) && CheckPoint == 0)
+        {
+            CheckPoint += 1;
+            //plane.SetBool("Idle", false);
+            for (int temp = 0; temp < grid.transform.childCount; temp++)
+            {
+                if (RuneList[temp] == '1')
+                {
+                    ListNo[j] = temp;
+                    j++;
+                    //K = new int(Random.Range(1,j));
+                }
+            }
+            K = UnityEngine.Random.Range(1, j);
+
+            GameObject RuneRandom = new GameObject("RuneRandom");
+            RuneRandom.AddComponent<MeshRenderer>();
+            RuneRandom.AddComponent<MeshFilter>();
+            RuneRandom.AddComponent<SetRuneMaterial>().init(K); //test
+
+            print("RandomNum:" + ListNo[K]); //隨機產生數字
+
+            SceneManager.CurrentRuneID = K;
+            Story.rune = K;
+
+            //隨機圖騰置中
+            canvas = GameObject.Find("Canvas");
+            startRune = canvas.transform.GetChild(1).GetChild(0).GetChild(K-1).gameObject;
+            startRune.transform.position = new Vector3(75, 45, 0);
+
+            //Application.LoadLevel("Main");
         }
-		
-	}
+
+    }
 
     // Use this for initialization
     void Start () {
@@ -107,13 +146,14 @@ public class RuneManagerCs : MonoBehaviour {
 
     void Update()
     {
-        if (grid.transform.position.x > 245)
+        //調整圖騰主要拉軸固定問題
+        if (grid.transform.position.x > 260)
         {
-            grid.transform.position = new Vector3(245, 45, 0);
+            grid.transform.position = new Vector3(260, 45, 0);
         }
-        if(grid.transform.position.x <-125)
+        if(grid.transform.position.x <-120)
         {
-            grid.transform.position = new Vector3(-125, 45, 0);
+            grid.transform.position = new Vector3(-120, 45, 0);
         }
     }
 
