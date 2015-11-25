@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RuneManagerCs : MonoBehaviour {
 	private Animator plane;
-	private Texture2D ButtonImage = null;
+	private Texture2D StartGame = null;
 	private GUISkin RandomSkin = null;
 
 	private GameObject canvas = null;
@@ -29,7 +29,7 @@ public class RuneManagerCs : MonoBehaviour {
     private GameObject startRune;
 
 	void Awake(){
-		ButtonImage = (Texture2D)Resources.Load("Image/Random");
+        StartGame = (Texture2D)Resources.Load("Image/StartGame");
 		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
 
 	}
@@ -64,7 +64,7 @@ public class RuneManagerCs : MonoBehaviour {
         }*/
 
         //點擊圖片按鈕測試
-        if (GUI.Button(new Rect(350, 180, ButtonImage.width, ButtonImage.height), ButtonImage) && CheckPoint == 0)
+        if (GUI.Button(new Rect(300, 350, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)
         {
             CheckPoint += 1;
             //plane.SetBool("Idle", false);
