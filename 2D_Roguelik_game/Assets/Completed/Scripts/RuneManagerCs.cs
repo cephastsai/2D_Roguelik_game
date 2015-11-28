@@ -8,10 +8,8 @@ public class RuneManagerCs : MonoBehaviour {
 	private Animator plane;
 	private Texture2D StartGame = null;
 	private GUISkin RandomSkin = null;
-
 	private GameObject canvas = null;
 	private GameObject grid = null;
-
     private FileInfo theSourceFile = null;
     private StreamReader StreamReader = null;
     private string text = " ";
@@ -64,7 +62,7 @@ public class RuneManagerCs : MonoBehaviour {
         }*/
 
         //點擊圖片按鈕測試
-        if (GUI.Button(new Rect(300, 350, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)
+		if (GUILayout.Button("Start Game")&& CheckPoint == 0)/*(GUI.Button(new Rect(300, 350, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)*/
         {
             CheckPoint += 1;
             //plane.SetBool("Idle", false);
@@ -94,7 +92,7 @@ public class RuneManagerCs : MonoBehaviour {
             startRune = canvas.transform.GetChild(1).GetChild(0).GetChild(K-1).gameObject;
             startRune.transform.position = new Vector3(75, 45, 0);
 
-            //Application.LoadLevel("Main");
+            Application.LoadLevel("Main");
         }
 
     }
