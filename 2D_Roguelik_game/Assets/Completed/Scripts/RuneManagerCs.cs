@@ -62,7 +62,7 @@ public class RuneManagerCs : MonoBehaviour {
         }*/
 
         //點擊圖片按鈕測試
-		if (GUILayout.Button("Start Game")&& CheckPoint == 0)/*(GUI.Button(new Rect(300, 350, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)*/
+		if (GUI.Button(new Rect(0, 0, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)
         {
             CheckPoint += 1;
             //plane.SetBool("Idle", false);
