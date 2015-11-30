@@ -25,6 +25,7 @@ namespace Completed
 		private int food;							//Used to store player food points total during level.
         private int maxFood;
 		private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
+		public static bool runed = false;
 		
 		//Start overrides the Start function of MovingObject
 		protected override void Start ()
@@ -40,6 +41,13 @@ namespace Completed
 			foodText.text = "Food: " + food;
             maxfoodText.text = "Max: " + maxFood;
 			maxfoodText.transform.position = new Vector3(400,350,100);
+
+			Story.food = food;
+
+			if(runed == true){
+				pointsPerFood =  5;
+				pointsPerSoda =  10;
+			}
 			
 			//Call the Start function of the MovingObject base class.
 			base.Start ();
@@ -146,7 +154,8 @@ namespace Completed
 			
 			//Update food text display to reflect current score.
 			foodText.text = "Food: " + food;
-			
+
+			Story.food = food;
 			//Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
 			base.AttemptMove <T> (xDir, yDir);
 			
@@ -201,6 +210,7 @@ namespace Completed
 			{
 				//Add pointsPerFood to the players current food total.
 				food += pointsPerFood;
+				Story.food = food;
 
                 if (food > maxFood)
                 {
@@ -227,6 +237,7 @@ namespace Completed
 			{
 				//Add pointsPerSoda to players food points total
 				food += pointsPerSoda;
+				Story.food = food;
 
                 if (food > maxFood)
                 {
@@ -248,6 +259,11 @@ namespace Completed
 				other.gameObject.SetActive (false);
 			}
 			else if(other.tag == "Rune"){
+				food = 20;
+				runed = true;
+				pointsPerFood =  5;
+				pointsPerSoda =  10;
+				
 				other.gameObject.SetActive (false);
 			}
 		}
@@ -270,6 +286,7 @@ namespace Completed
 			
 			//Subtract lost food points from the players total.
 			food -= loss;
+			Story.food = food;
 			
 			//Update the food display with the new total.
 			foodText.text = "-"+ loss + " Food: " + food;
@@ -285,6 +302,7 @@ namespace Completed
 			//Check if food point total is less than or equal to zero.
 			if (food <= 0) 
 			{
+				Player.runed = false;
 				//0,(int)transform.position.x,(int)transform.position.y,0
 				InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,RuneManagerCs.K);
 				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.

@@ -11,7 +11,8 @@ public class InformationReaderCs : MonoBehaviour {
 	public static StreamReader streamReader = null;
 	public static StreamWriter streamWriter = null;
 	public static string text = " ";
-	public static int[,] runeinfo = new int[20,20];
+	public static int[,] runeinfo = new int[50,20];
+    public static int DieCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -31,14 +32,23 @@ public class InformationReaderCs : MonoBehaviour {
 		theSourceFile = new FileInfo("test.txt");
 		streamReader = theSourceFile.OpenText();
 
-		if (text != null)
+        if (text != null)
 		{
 			//ReadToEnd:可以將文件從頭讀到尾
 			//ReadLine:只可讀取文件的一行文字
 			text = streamReader.ReadToEnd();
-			//print(text);
+            //print(text);
 
-			string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
+            DieCount = 1;
+            for (int temp = 0; temp < text.Length; temp++)
+            {
+                if (text[temp] == ';')
+                {
+                    DieCount++;
+                }
+            }
+
+            string[] textTemp = text.Split(new char[] { ';' }); //";"為每一個死亡次數的區隔
 
 
 			LoadRuneInfo(textTemp);
@@ -76,23 +86,28 @@ public class InformationReaderCs : MonoBehaviour {
 			int[] temp_int = null;
 			temp_int = Array.ConvertAll(Info_str[i].Split(new char[]{','}),new Converter<String,int>(Convert.ToInt32));
 
-			//for(int j=0;j<temp_int.Length;j++) print(temp_int[j]);
+            //for(int j=0;j<temp_int.Length;j++) print(temp_int[j]);
+
+            //DieCount++;
 
 			for(int w=0;w < 20;w++){
 				if( runeinfo[temp_int[0],w] == -1){
 					runeinfo[temp_int[0],w] 	=  temp_int[1];
 					runeinfo[temp_int[0],w+1]	=  temp_int[2];
 					runeinfo[temp_int[0],w+2] 	=  temp_int[3];
+                    //DieCount++;
 					break;
 				}
 			}
 
 		}
-		/*
+        /*
 		for(int i = 0;i<20;i++)
 			for(int j = 0;j<20;j++)
 				print(i +","+ j +":" +runeinfo[i,j]);
 		*/
-	}
+        print(DieCount);
+        PlayerPrefs.SetInt("DieCount", (DieCount+1));
+    }
 
 }

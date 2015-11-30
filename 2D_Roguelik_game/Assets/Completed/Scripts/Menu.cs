@@ -8,13 +8,13 @@ public class Menu : MonoBehaviour {
 	public GameObject Fog1 = null;
 	public GameObject Fog2 = null;
 
-    void OnGUI()
+    /*void OnGUI()
     {
         if (GUILayout.Button("Start Game"))
         {
             Application.LoadLevel("Main");
         }
-    }
+    }*/
 
     // Use this for initialization
 
