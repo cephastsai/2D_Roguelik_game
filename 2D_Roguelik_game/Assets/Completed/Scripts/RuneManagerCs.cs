@@ -23,21 +23,18 @@ public class RuneManagerCs : MonoBehaviour {
 	private String RuneList;
 	public static int K = 0;
     private int RuneCount = 0;
+    private GameObject startRune; //按鈕設定
+    private static Animator aniController;
 
-    //按鈕設定
-    //private Texture StartGameButton = null;
-    private GameObject startRune;
-
-	void Awake(){
+    void Awake(){
         StartGame = (Texture2D)Resources.Load("Image/StartGame");
 		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
-
 	}
 
 	void OnGUI()
     {
-		//GUI.skin = RandomSkin;
-	    /*if (GUILayout.Button("Start Game"))
+        //GUI.skin = RandomSkin;
+        /*if (GUILayout.Button("Start Game"))
 		{
 			CheckPoint +=1;
 			//plane.SetBool("Idle", false);
@@ -64,7 +61,7 @@ public class RuneManagerCs : MonoBehaviour {
         }*/
 
         //點擊圖片按鈕測試
-        if (GUI.Button(new Rect(300, 350, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)
+        if (GUI.Button(new Rect(300, 400, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)
         {
             CheckPoint += 1;
             //plane.SetBool("Idle", false);
@@ -77,26 +74,74 @@ public class RuneManagerCs : MonoBehaviour {
                     //K = new int(Random.Range(1,j));
                 }
             }
-            K = UnityEngine.Random.Range(1, j);
+            K = UnityEngine.Random.Range(0, j);
 
             GameObject RuneRandom = new GameObject("RuneRandom");
             RuneRandom.AddComponent<MeshRenderer>();
             RuneRandom.AddComponent<MeshFilter>();
-            RuneRandom.AddComponent<SetRuneMaterial>().init(K); //test
+            RuneRandom.AddComponent<Animator>();
 
-            print("RandomNum:" + ListNo[K]); //隨機產生數字
+            print("RandomNum:" + (ListNo[K]+1)); //隨機產生數字
 
-            SceneManager.CurrentRuneID = K;
-            Story.rune = K;
+            SceneManager.CurrentRuneID = K+1;
+            Story.rune = K+1;
 
             //隨機圖騰置中
             canvas = GameObject.Find("Canvas");
-            startRune = canvas.transform.GetChild(1).GetChild(0).GetChild(K-1).gameObject;
-            startRune.transform.position = new Vector3(75, 45, 0);
+            startRune = canvas.transform.GetChild(1).GetChild(0).GetChild(K).gameObject;
 
-            Application.LoadLevel("Main");
+            aniController = canvas.transform.GetChild(1).GetChild(0).GetChild(K).gameObject.GetComponent<Animator>();
+
+            if (K == 0)
+            {
+                grid.transform.position = new Vector3(-116, 37, 0);
+                aniController.SetInteger("Number", 1);
+                StartCoroutine("EnterLevel");
+            }
+            else if (K == 1)
+            {
+                grid.transform.position = new Vector3(-50, 37, 0);
+                aniController.SetInteger("Number", 1);
+                StartCoroutine("EnterLevel");
+            }
+            else if (K == 2)
+            {
+                grid.transform.position = new Vector3(15, 37, 0);
+                aniController.SetInteger("Number", 1);
+                StartCoroutine("EnterLevel");
+            }
+            else if (K == 3)
+            {
+                grid.transform.position = new Vector3(80, 37, 0);
+                aniController.SetInteger("Number", 1);
+                StartCoroutine("EnterLevel");
+            }
+            else if (K == 4)
+            {
+                grid.transform.position = new Vector3(137, 37, 0);
+                aniController.SetInteger("Number", 1);
+                StartCoroutine("EnterLevel");
+            }
+            else if (K == 5)
+            {
+                grid.transform.position = new Vector3(200, 37, 0);
+                aniController.SetInteger("Number", 1);
+                StartCoroutine("EnterLevel");
+            }
+            /*else if(K == 6)
+            {
+                grid.transform.position = new Vector3(260, 37, 0);
+                aniController.SetInteger("Number", 1);
+                StartCoroutine("EnterLevel");
+            }*/
         }
+    }
 
+    IEnumerator EnterLevel()
+    {
+        yield return new WaitForSeconds(5);
+        Application.LoadLevel("Main");
+        //print("444");
     }
 
     // Use this for initialization
@@ -106,7 +151,7 @@ public class RuneManagerCs : MonoBehaviour {
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
 		grid = canvas.transform.GetChild(1).GetChild(0).gameObject;
-		grid.transform.position = new Vector3(0,45,0);
+		grid.transform.position = new Vector3(0,37,0);
 
         // add component "SetRuneMaterial" ,all child
         /*
@@ -149,11 +194,11 @@ public class RuneManagerCs : MonoBehaviour {
         //調整圖騰主要拉軸固定問題
         if (grid.transform.position.x > 260)
         {
-            grid.transform.position = new Vector3(260, 45, 0);
+            grid.transform.position = new Vector3(260, 37, 0);
         }
-        if(grid.transform.position.x <-120)
+        if(grid.transform.position.x <-110)
         {
-            grid.transform.position = new Vector3(-120, 45, 0);
+            grid.transform.position = new Vector3(-110, 37, 0);
         }
     }
 
