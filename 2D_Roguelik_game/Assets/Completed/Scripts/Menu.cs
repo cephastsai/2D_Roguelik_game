@@ -21,14 +21,10 @@ public class Menu : MonoBehaviour {
 	void Start () {
 		RuneManager = new GameObject("RuneManager");
 		RuneManager.AddComponent<RuneManagerCs>();
-		Fog1 = GameObject.Find("Fog1");
-		//Fog1 = new GameObject("Fog1");
-		Fog1.gameObject.AddComponent<SetFog1Material> ();
-		Fog2 = GameObject.Find("Fog2");
-		//Fog2 = new GameObject ("Fog2");
-		Fog2.gameObject.AddComponent<SetFog2Material> ();
-
-
+		GameObject.Find ("Fog1").AddComponent<SetFog1Material> ();
+		GameObject.Find ("Fog2").AddComponent<SetFog2Material> ();
+		GameObject.Find ("Fog3").AddComponent<SetFog1Material> ();
+		GameObject.Find ("Fog4").AddComponent<SetFog2Material> ();
 	}
 	
 	// Update is called once per frame
