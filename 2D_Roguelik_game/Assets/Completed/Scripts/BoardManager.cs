@@ -99,8 +99,8 @@ namespace Completed
 			// set rune
 			int level = GameManager.instance.getlevel();
 			//for(int i =0;i<10;i++){
-				//if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
-				//print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
+			if(InformationReaderCs.runeinfo[level,0] != -1){
+			//print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
 				rune[0] = new GameObject ("rune");
 				rune[0].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));			
 				rune[0].transform.position = new Vector3(InformationReaderCs.runeinfo[level,0],InformationReaderCs.runeinfo[level,1],0f);
@@ -120,7 +120,7 @@ namespace Completed
 				runesprite[0].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune" + InformationReaderCs.runeinfo[level,2].ToString(),typeof(Sprite));
 				runesprite[0].GetComponent<SpriteRenderer>().sortingLayerName = "RuneSprite";
 				runesprite[0].transform.SetParent(rune[0].transform);
-
+			}
 			//}
 
 			//show current rune
