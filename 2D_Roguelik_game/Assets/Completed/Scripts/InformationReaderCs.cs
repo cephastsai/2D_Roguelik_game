@@ -90,15 +90,11 @@ public class InformationReaderCs : MonoBehaviour {
 
             //DieCount++;
 
-			for(int w=0;w < 20;w++){
-				if( runeinfo[temp_int[0],w] == -1){
-					runeinfo[temp_int[0],w] 	=  temp_int[1];
-					runeinfo[temp_int[0],w+1]	=  temp_int[2];
-					runeinfo[temp_int[0],w+2] 	=  temp_int[3];
-                    //DieCount++;
-					break;
-				}
-			}
+			runeinfo[temp_int[0],0] 	=  temp_int[1];
+			runeinfo[temp_int[0],1]		=  temp_int[2];
+			runeinfo[temp_int[0],2] 	=  temp_int[3];
+                    
+
 
 		}
         /*

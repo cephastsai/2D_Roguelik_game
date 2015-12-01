@@ -98,29 +98,30 @@ namespace Completed
 			}
 			// set rune
 			int level = GameManager.instance.getlevel();
-			for(int i =0;i<10;i++){
-				if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
+			//for(int i =0;i<10;i++){
+				//if(InformationReaderCs.runeinfo[level,3*i] == -1) break;
 				//print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
-				rune[i] = new GameObject ("rune" + i.ToString());
-				rune[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));			
-				rune[i].transform.position = new Vector3(InformationReaderCs.runeinfo[level,3*i],InformationReaderCs.runeinfo[level,3*i+1],0f);
-				rune[i].AddComponent<BoxCollider2D>().size = new Vector2(1,1);
-				rune[i].GetComponent<BoxCollider2D>().isTrigger = true;
-				rune[i].GetComponent<SpriteRenderer>().sortingLayerName = "Rune";
-				rune[i].tag = "Rune";
+				rune[0] = new GameObject ("rune");
+				rune[0].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));			
+				rune[0].transform.position = new Vector3(InformationReaderCs.runeinfo[level,0],InformationReaderCs.runeinfo[level,1],0f);
+				rune[0].AddComponent<BoxCollider2D>().size = new Vector2(1,1);
+				rune[0].GetComponent<BoxCollider2D>().isTrigger = true;
+				rune[0].GetComponent<SpriteRenderer>().sortingLayerName = "Rune";
+				rune[0].tag = "Rune";
 				//print(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
-				int runePosID = 6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1;
+				/*
+				int runePosID = 6*(InformationReaderCs.runeinfo[level,0]-1)+InformationReaderCs.runeinfo[level,1]-1;
 				if(runePosID >0)
-					gridPositions.RemoveAt(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
+					gridPositions.RemoveAt(6*(InformationReaderCs.runeinfo[level,0]-1)+InformationReaderCs.runeinfo[level,1]-1);
+				*/
+				runesprite[0] = new GameObject ("runesprite");
+				runesprite[0].transform.position = new Vector3(rune[0].transform.position.x,rune[0].transform.position.y,-1);
+				runesprite[0].transform.localScale = new Vector3(0.2f,0.2f,1);
+				runesprite[0].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune" + InformationReaderCs.runeinfo[level,2].ToString(),typeof(Sprite));
+				runesprite[0].GetComponent<SpriteRenderer>().sortingLayerName = "RuneSprite";
+				runesprite[0].transform.SetParent(rune[0].transform);
 
-				runesprite[i] = new GameObject ("runesprite" + i.ToString());
-				runesprite[i].transform.position = new Vector3(rune[i].transform.position.x,rune[i].transform.position.y,-1);
-				runesprite[i].transform.localScale = new Vector3(0.2f,0.2f,1);
-				runesprite[i].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune" + InformationReaderCs.runeinfo[level,3*i+2].ToString(),typeof(Sprite));
-				runesprite[i].GetComponent<SpriteRenderer>().sortingLayerName = "RuneSprite";
-				runesprite[i].transform.SetParent(rune[i].transform);
-
-			}
+			//}
 
 			//show current rune
 			//print(SceneManager.CurrentRuneID);
