@@ -27,11 +27,6 @@ public class Story : MonoBehaviour {
 
 	private string storystring = " ";
 
-	private Renderer StoryInfoBGRend = null;
-	private Material Mat = null;
-	private bool setmat = true;
-	private Color infobgcolor;
-
 
 	// Use this for initialization
 	void Start () {
@@ -95,17 +90,6 @@ public class Story : MonoBehaviour {
 	void Update () {
 		//print(storyon);
 		//print(storyon + "," + (Time.time- time));
-
-		if(setmat && Application.loadedLevelName == "Main"){
-			StoryInfoBGRend = GameObject.Find("StoryInfoBG").GetComponent<Renderer>();
-			Mat = (Material)Resources.Load("Material/StoryInfoBgMat",typeof(Material));
-			StoryInfoBGRend.sharedMaterial = Mat;
-			infobgcolor.a = 0f;
-			Mat.color = infobgcolor;
-			
-			setmat = false;
-		}
-
 		if(Time.time - time > 4f && info_on == true){
 			storyon = false;
 			info_on = false;
@@ -134,30 +118,19 @@ public class Story : MonoBehaviour {
 		// info start
 		if(storyon == true && storytext != null){
 
-			if(setmat){
-				StoryInfoBGRend = GameObject.Find("StoryInfoBG").GetComponent<Renderer>();
-				Mat = (Material)Resources.Load("Material/StoryInfoBgMat",typeof(Material));
-				StoryInfoBGRend.sharedMaterial = Mat;
-				infobgcolor.a = 0f;
-				Mat.color = infobgcolor;
-
-				setmat = false;
-			}
 			//text set
 
 			if(Time.time - texttime >=2){
-				if(textcolor.a > 0.1f){
-					textcolor.a -= 0.01f;
-					Mat.color = textcolor;
+				if(textcolor.a > 0.3f){
+					textcolor.a -= 0.005f;
 					storytext.color = textcolor;
 				}
 			}
 
-			if(textcolor.a <= 0.1f){
+			if(textcolor.a <= 0.3f){
 				storytext.text ="";
 				textcolor.a = 1f;
 				storytext.color = textcolor;
-				Mat.color = infobgcolor;
 				storyon = false;
 			}
 
@@ -171,7 +144,6 @@ public class Story : MonoBehaviour {
 		storytext.text = storyinfo[infoID];
 		textcolor = storytext.color;
 		storytext.color = textcolor;
-		Mat.color = textcolor;
 		storyon = true;
 		level_story = true;
 		texttime= Time.time;
