@@ -131,7 +131,7 @@ namespace Completed
 			//CurrentRuneUI.AddComponent<MeshFilter>();
 			//CurrentRuneUI.AddComponent<SetRuneMaterial>().init(SceneManager.CurrentRuneID);
 			CurrentRuneUI.transform.localScale = new Vector3(0.4f,0.4f,1);
-			CurrentRuneUI.transform.position = new Vector3(-2,5,0);
+			CurrentRuneUI.transform.position = new Vector3(-3.7f,5f,0f);
 		}
 		
 		

@@ -25,6 +25,7 @@ namespace Completed
 		
 		private Text levelText;									//Text to display current level number.
         private Text maxpointText;
+        private Text pointText;
         private GameObject levelImage;							//Image to block out level as levels are being set up, background for levelText.
 		private BoardManager boardScript;						//Store a reference to our BoardManager which will set up the level.
         private SceneManager SceneManager;
@@ -121,6 +122,7 @@ namespace Completed
 			//Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
 			levelText = GameObject.Find("LevelText").GetComponent<Text>();
             maxpointText = GameObject.Find("MaxPointText").GetComponent<Text>();
+            //pointText = GameObject.Find("PointText").GetComponent<Text>();
 
             //Set the text of levelText to the string "Day" and append the current level number.
             levelText.text = "Day " + level;

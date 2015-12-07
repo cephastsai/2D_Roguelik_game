@@ -21,14 +21,19 @@ namespace Completed
 		bool r1 = true;
 		private int d =0;
 		bool d1 = true;
-		// Use this for initialization
-		void Start()
+
+        bool restartBool = false;
+        //private GameObject RestartGame;
+
+        // Use this for initialization
+        void Start()
 		{
 			level = PlayerPrefs.GetInt("level", level);
 			playerMaxFoodPoint = PlayerPrefs.GetInt("playerMaxFoodPoint", playerMaxFoodPoint);
 			RuneCount = PlayerPrefs.GetInt("RuneCount", RuneCount);
 			DieCount = PlayerPrefs.GetInt("DieCount", DieCount);
 		}
+
 		IEnumerator Level(){
 			yield return new WaitForSeconds (0.25f);
 			l++;
@@ -49,6 +54,7 @@ namespace Completed
 			d++;
 			d1 = true;
 		}
+
 		// Update is called once per frame
 		void Update()
 		{
@@ -60,6 +66,7 @@ namespace Completed
 			GameObject.Find ("Point(2)").GetComponent<UILabel> ().text = food;
 			GameObject.Find ("Life(2)").GetComponent<UILabel> ().text = life;
 			GameObject.Find ("Rune(2)").GetComponent<UILabel> ().text = rune;
+            //GameObject.Find("Restart") = restartBool;
 			if (l1 && level>l) {
 				StartCoroutine ("Level");
 				l1 =false;
@@ -100,20 +107,16 @@ namespace Completed
 			} else if (d == DieCount) {
 				StopCoroutine ("Die");
 				GameObject.Find ("Life(2)").GetComponent<UILabel> ().fontSize = size4;
-			}
+                restartBool = true;
+            }
 			if (GameObject.Find ("Life(2)").GetComponent<UILabel> ().fontSize >= 30) {
 				size4--;
 			}
-			
-			
-		}
-		
-		void OnGUI()
-		{
-			if (GUILayout.Button("Restart Game"))
-			{
-				Application.LoadLevel("Menu");
-			}
+
+            if(restartBool == true)
+            {
+                GameObject.Find("RestartGame").transform.localPosition = new Vector3(0, -3, 0);
+            }
 		}
 	}
 }
