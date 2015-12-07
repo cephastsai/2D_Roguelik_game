@@ -26,11 +26,11 @@ public class SetRuneMaterial : MonoBehaviour {
 		Rend.sharedMaterial = Mat;
 
 		//set Material Shader
-		Mat.shader = Shader.Find("Glow 11/Unity/Particles/Alpha Blended");
+		Mat.shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
 
 		//set Material Textue
 		Mat.mainTexture = (Texture)Resources.Load("Image/rune" + runeID.ToString(),typeof(Texture));
 
-		gameObject.AddComponent<ColorChanger>();
+		//gameObject.AddComponent<ColorChanger>();
 	}
 }

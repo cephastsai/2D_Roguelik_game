@@ -20,7 +20,7 @@ public class SetNullRuneMaterial : MonoBehaviour {
 		Rend = GetComponent<Renderer>();	
 		Mat = (Material)Resources.Load("Material/GlowRune " + runeID.ToString(),typeof(Material));
 		Rend.sharedMaterial = Mat;
-		Mat.shader = Shader.Find("Glow 11/Unity/Particles/Alpha Blended");
+		Mat.shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
 		Mat.mainTexture = (Texture)Resources.Load("Image/NullRune",typeof(Texture));
 		//gameObject.AddComponent<ColorChanger>();
 	}
