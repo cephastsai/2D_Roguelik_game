@@ -99,7 +99,7 @@ namespace Completed
 			// set rune
 			int level = GameManager.instance.getlevel();
 			//for(int i =0;i<10;i++){
-			if(InformationReaderCs.runeinfo[level,0] != -1){
+			/*if(InformationReaderCs.runeinfo[level,0] != -1){
 			//print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
 				rune[0] = new GameObject ("rune");
 				rune[0].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Random",typeof(Sprite));			
@@ -108,19 +108,14 @@ namespace Completed
 				rune[0].GetComponent<BoxCollider2D>().isTrigger = true;
 				rune[0].GetComponent<SpriteRenderer>().sortingLayerName = "Rune";
 				rune[0].tag = "Rune";
-				//print(6*(InformationReaderCs.runeinfo[level,3*i]-1)+InformationReaderCs.runeinfo[level,3*i+1]-1);
-				/*
-				int runePosID = 6*(InformationReaderCs.runeinfo[level,0]-1)+InformationReaderCs.runeinfo[level,1]-1;
-				if(runePosID >0)
-					gridPositions.RemoveAt(6*(InformationReaderCs.runeinfo[level,0]-1)+InformationReaderCs.runeinfo[level,1]-1);
-				*/
+
 				runesprite[0] = new GameObject ("runesprite");
 				runesprite[0].transform.position = new Vector3(rune[0].transform.position.x,rune[0].transform.position.y,-1);
 				runesprite[0].transform.localScale = new Vector3(0.2f,0.2f,1);
 				runesprite[0].AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune" + InformationReaderCs.runeinfo[level,2].ToString(),typeof(Sprite));
 				runesprite[0].GetComponent<SpriteRenderer>().sortingLayerName = "RuneSprite";
 				runesprite[0].transform.SetParent(rune[0].transform);
-			}
+			}*/
 			//}
 
 			//show current rune
