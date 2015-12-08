@@ -87,11 +87,11 @@ public class InformationReaderCs : MonoBehaviour {
 
 	//public static void LoadRuneInfo(string[] Info_str){
 	public static void LoadRuneInfo(){
-		print(text);
 		for(int i=1;i < text.Length;i++){
 			//string tempstring;
 			//tempstring[0] = text[i-1];
-			levelrune[i] = Convert.ToInt32(text[i-1]);
+			levelrune[i] = Convert.ToInt32(text[i]-1)-47;
+
 		}
 
 
