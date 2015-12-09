@@ -47,11 +47,11 @@ namespace Completed
             levelText.text = "Day : " + level;
 
             Story.food = food;
-
+			/*
 			if(runed == true){
 				pointsPerFood =  5;
 				pointsPerSoda =  10;
-			}
+			}*/
 			
 			//Call the Start function of the MovingObject base class.
 			base.Start ();
@@ -285,6 +285,7 @@ namespace Completed
 				//Disable the soda object the player collided with.
 				other.gameObject.SetActive (false);
 			}
+			/*
 			else if(other.tag == "Rune"){
 				food = 20;
 				runed = true;
@@ -293,7 +294,7 @@ namespace Completed
                 pointText.text = "reset " + 20;
 
                 other.gameObject.SetActive (false);
-			}
+			}*/
 		}
 		
 		
