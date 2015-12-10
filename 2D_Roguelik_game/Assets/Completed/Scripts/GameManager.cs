@@ -73,7 +73,9 @@ namespace Completed
             boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level 
-            InitGame();					
+            InitGame();	
+
+			SetupRuneAbility.startgame = true;
             		 
         }
 

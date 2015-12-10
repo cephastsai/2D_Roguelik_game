@@ -355,9 +355,20 @@ namespace Completed
                 maxfoodText.text = "";
                 pointText.text = "";
                 levelText.text = "";
-    }
+    		}
 		}
-		
+
+		public void addfood(int mode,float num){
+			if(mode == 1){
+
+				food = (int)((float)food*num);
+				foodText.text = "Food: " + food;
+			}else if(mode == 2){
+
+				food += (int)num;
+				foodText.text = "Food: " + food;
+			}
+		}
 	}
 }
 

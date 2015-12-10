@@ -104,6 +104,9 @@ namespace Completed
 			LevelRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ InformationReaderCs.levelrune[level].ToString(),typeof(Sprite));
 			LevelRuneUI.transform.localScale = new Vector3(0.5f,0.5f,1);
 			LevelRuneUI.transform.position = new Vector3(9.5f,5f,0f);
+
+
+			SetupRuneAbilityManager(InformationReaderCs.levelrune[level]);
 			//for(int i =0;i<10;i++){
 			/*if(InformationReaderCs.runeinfo[level,0] != -1){
 			//print(i +"__x:" + InformationReaderCs.runeinfo[level,3*i]+"y:"+InformationReaderCs.runeinfo[level,3*i+1]+"rune:"+InformationReaderCs.runeinfo[level,3*i+2]);
@@ -212,6 +215,12 @@ namespace Completed
 
 			//for(int i=0;i<gridPositions.Count;i++)
 				//print(i+":"+gridPositions[i]);
+		}
+
+		void SetupRuneAbilityManager(int runeID){
+
+			GameObject RuneAbilityManager = new GameObject("RuneAbilityManager");
+			RuneAbilityManager.AddComponent<SetupRuneAbility>().init(runeID);
 		}
 	}
 }
