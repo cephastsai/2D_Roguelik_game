@@ -161,7 +161,7 @@ namespace Completed
 		
 		
 		//LayoutObjectAtRandom accepts an array of game objects to choose from along with a minimum and maximum range for the number of objects to create.
-		void LayoutObjectAtRandom (GameObject[] tileArray, int minimum, int maximum , bool addmat)
+		public void LayoutObjectAtRandom (GameObject[] tileArray, int minimum, int maximum , bool addmat)
 		{
 			print(addmat);
 			//Choose a random number of objects to instantiate within the minimum and maximum limits

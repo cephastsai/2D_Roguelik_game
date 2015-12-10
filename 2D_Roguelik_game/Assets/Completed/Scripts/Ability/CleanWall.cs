@@ -4,7 +4,7 @@ using System.Collections;
 public class CleanWall : MonoBehaviour {
 
 	private bool temp = true;
-
+	private GameObject[] Wall;
 
 	void Start () {
 		
@@ -18,7 +18,10 @@ public class CleanWall : MonoBehaviour {
 	}
 	
 	void cleanWall(){
-
+		Wall = GameObject.FindGameObjectsWithTag("Wall");
+		for(int i=0;i<Wall.Length;i++){
+			Destroy(Wall[i]);
+		}
 		temp = false;
 	}
 }

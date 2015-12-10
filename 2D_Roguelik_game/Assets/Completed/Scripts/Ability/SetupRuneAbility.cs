@@ -38,9 +38,19 @@ public class SetupRuneAbility : MonoBehaviour {
 					gameObject.AddComponent<AddFood> ();
 				}
 				break;
-			case 4:
+			case 5:
 				if(gameObject.GetComponent<CleanWall>() == null){
 					gameObject.AddComponent<CleanWall> ();
+				}
+				break;
+			case 6:
+				if(gameObject.GetComponent<CleanEnemy>() == null){
+					gameObject.AddComponent<CleanEnemy> ();
+				}
+				break;
+			case 7:
+				if(gameObject.GetComponent<GetAllBoardFood>() == null){
+					gameObject.AddComponent<GetAllBoardFood> ();
 				}
 				break;
 		}
