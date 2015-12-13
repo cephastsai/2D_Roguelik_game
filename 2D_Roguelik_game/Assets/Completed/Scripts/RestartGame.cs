@@ -3,11 +3,10 @@ using System.Collections;
 
 public class RestartGame : MonoBehaviour {
 
-    void OnMouseDown()
-    {
-        Application.LoadLevel("Menu");
-    }
-
+	void OnClick ()
+	{
+		Application.LoadLevel("Menu");
+	}
     // Use this for initialization
     void Start () {
 	

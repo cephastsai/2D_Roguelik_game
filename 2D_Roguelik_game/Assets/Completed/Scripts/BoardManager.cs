@@ -25,7 +25,7 @@ namespace Completed
 			}
 		}
 		
-		
+		public new Color a = new Color(0,0,0);
 		public int columns = 8; 										//Number of columns in our game board.
 		public int rows = 8;											//Number of rows in our game board.
 		public Count wallCount = new Count (5, 9);						//Lower and upper limit for our random number of walls per level.
@@ -131,13 +131,17 @@ namespace Completed
 
 			//show current rune
 			//print(SceneManager.CurrentRuneID);
-			CurrentRuneUI = new GameObject ("CurrentRune");
-			CurrentRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
+			//CurrentRuneUI = new GameObject ("CurrentRune");
+			//CurrentRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
+			GameObject.Find("CurrentRune").AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
+			GameObject.Find("CurrentRune").GetComponent<SpriteRenderer>().material = (Material)Resources.Load("Material/GlowRune 1",typeof(Material)); 
 			//CurrentRuneUI.AddComponent<MeshRenderer>();
 			//CurrentRuneUI.AddComponent<MeshFilter>();
 			//CurrentRuneUI.AddComponent<SetRuneMaterial>().init(SceneManager.CurrentRuneID);
-			CurrentRuneUI.transform.localScale = new Vector3(0.4f,0.4f,1);
-			CurrentRuneUI.transform.position = new Vector3(-3.7f,5f,0f);
+			GameObject.Find("CurrentRune").transform.localScale = new Vector3(0.4f,0.4f,1);
+			GameObject.Find("CurrentRune").transform.position = new Vector3(-3.7f,5f,0f);
+			//CurrentRuneUI.transform.localScale = new Vector3(0.4f,0.4f,1);
+			//CurrentRuneUI.transform.position = new Vector3(-3.7f,5f,0f);
 		}
 		
 		
