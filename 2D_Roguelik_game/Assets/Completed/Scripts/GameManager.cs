@@ -97,7 +97,7 @@ namespace Completed
 				Story.storyon = true;
                 //Add one to our level number.
                 level++;
-
+				print(level);
 				Story.Level = level;
                 //Call InitGame to initialize our level.
                 InitGame();
@@ -127,7 +127,8 @@ namespace Completed
             //pointText = GameObject.Find("PointText").GetComponent<Text>();
 
             //Set the text of levelText to the string "Day" and append the current level number.
-            levelText.text = "Day " + level;
+			print(level);
+            levelText.text = "Day : " + level;
 			
 			//Set levelImage to active blocking player's view of the game board during setup.
 			levelImage.SetActive(true);
@@ -155,6 +156,7 @@ namespace Completed
 		//Update is called every frame.
 		void Update()
 		{
+			//levelText.text = "Day " + level;
 			//Check that playersTurn or enemiesMoving or doingSetup are not currently true.
 			if(playersTurn || enemiesMoving || doingSetup)
 				

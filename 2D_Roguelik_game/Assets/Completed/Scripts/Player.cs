@@ -46,9 +46,9 @@ namespace Completed
             maxFood = GameManager.instance.playerMaxFoodPoint;
 
             //foodText.transform.position = new Vector3(-350, 225, 0);
-			foodText.text = "Food:" + food;
-            maxfoodText.text = "Max :" + maxFood;
-            levelText.text = "Day : " + level;
+			//foodText.text = "Food:" + food;
+            //maxfoodText.text = "Max :" + maxFood;
+            //levelText.text = "Day : " + level;
 
             Story.food = food;
 			/*
