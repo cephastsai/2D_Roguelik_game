@@ -29,7 +29,11 @@ namespace Completed
 		private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
 		public static bool runed = false;
         public int level;
-		
+
+		private bool gameoverflag = false;
+		private float gameovertime = 0f;
+		public GameObject DeathFXVer2;
+
 		//Start overrides the Start function of MovingObject
 		protected override void Start ()
 		{
@@ -137,12 +141,26 @@ namespace Completed
 				//Pass in horizontal and vertical as parameters to specify the direction to move Player in.
 				AttemptMove<Wall> (horizontal, vertical);
 			}
+
+
+			if(gameoverflag == true){
+				food = 0;
+				foodText.text = "Food:" + food;
+				if(Time.time - gameovertime >= 5f){
+					//gameoverflag = false;
+					//gameovertime = 0;
+					GameOver ();
+				}
+					
+			}
 		}
 		
 		//AttemptMove overrides the AttemptMove function in the base class MovingObject
 		//AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
 		protected override void AttemptMove <T> (int xDir, int yDir)
 		{
+			if(gameoverflag == true) return;
+
             if (food > maxFood)
             {
                 maxFood = food;
@@ -210,6 +228,7 @@ namespace Completed
 			//Check if the tag of the trigger collided with is Exit.
 			if(other.tag == "Exit")
 			{
+				SetupRuneAbility.endgame = true;
 				//Invoke the Restart function to start the next level with a delay of restartLevelDelay (default 1 second).
 				Invoke ("Restart", restartLevelDelay);
 				
@@ -336,26 +355,41 @@ namespace Completed
 		//CheckIfGameOver checks if the player is out of food points and if so, ends the game.
 		private void CheckIfGameOver ()
 		{
+			if(gameoverflag == true) return;
 			//Check if food point total is less than or equal to zero.
 			if (food <= 0) 
 			{
-				Player.runed = false;
-				//0,(int)transform.position.x,(int)transform.position.y,0
-				InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,RuneManagerCs.K);
-				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
-				SoundManager.instance.PlaySingle (gameOverSound);
-				
-				//Stop the background music.
-				SoundManager.instance.musicSource.Stop();
+				food = 0;
+				foodText.text = "Food:" + food;
+				if(GameObject.Find("RuneAbilityManager").GetComponent<AddFoodPercentage>() != null){
 
-                //Call the GameOver function of GameManager.
-                GameManager.instance.GameOver ();
-
-                foodText.text = "";
-                maxfoodText.text = "";
-                pointText.text = "";
-                levelText.text = "";
+				}else{
+					//DeathFXVer2 = ()Resources.Load("DeathFXVer2",typeof(Gameobject));
+					Instantiate (DeathFXVer2, this.transform.position, Quaternion.identity);
+					gameovertime = Time.time;
+					gameoverflag = true;
+				}
     		}
+		}
+
+		public void GameOver(){
+
+			Player.runed = false;
+			//0,(int)transform.position.x,(int)transform.position.y,0
+			InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,RuneManagerCs.K);
+			//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
+			SoundManager.instance.PlaySingle (gameOverSound);
+			
+			//Stop the background music.
+			SoundManager.instance.musicSource.Stop();
+			
+			//Call the GameOver function of GameManager.
+			GameManager.instance.GameOver ();
+			
+			foodText.text = "";
+			maxfoodText.text = "";
+			pointText.text = "";
+			levelText.text = "";
 		}
 
 		public void addfood(int mode,float num){
