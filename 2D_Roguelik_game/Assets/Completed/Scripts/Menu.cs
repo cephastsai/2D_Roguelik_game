@@ -25,10 +25,19 @@ public class Menu : MonoBehaviour {
 		GameObject.Find ("Fog2").AddComponent<SetFog2Material> ();
 		GameObject.Find ("Fog3").AddComponent<SetFog1Material> ();
 		GameObject.Find ("Fog4").AddComponent<SetFog2Material> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        GameObject.Find("Logo").transform.localPosition = new Vector3(71, 31, 0);
+        StartCoroutine("EnterRuneLevel");
+    }
+
+    IEnumerator EnterRuneLevel()
+    {
+        yield return new WaitForSeconds(3);
+        GameObject.Find("Logo").transform.localPosition = new Vector3(-60, 31, 0);
+        //print("444");
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 }
