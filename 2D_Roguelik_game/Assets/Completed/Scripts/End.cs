@@ -66,8 +66,9 @@ namespace Completed
 			GameObject.Find ("Point(2)").GetComponent<UILabel> ().text = food;
 			GameObject.Find ("Life(2)").GetComponent<UILabel> ().text = life;
 			GameObject.Find ("Rune(2)").GetComponent<UILabel> ().text = rune;
+            GameObject.Find("RestartGame").SetActive(false);
             //GameObject.Find("Restart") = restartBool;
-			if (l1 && level>l) {
+            if (l1 && level>l) {
 				StartCoroutine ("Level");
 				l1 =false;
 			} else if (l == level) {
@@ -115,7 +116,7 @@ namespace Completed
 
             if(restartBool == true)
             {
-                GameObject.Find("RestartGame").transform.localPosition = new Vector3(0, -3, 0);
+                GameObject.Find("RestartGame").SetActive(true);
             }
 		}
 	}

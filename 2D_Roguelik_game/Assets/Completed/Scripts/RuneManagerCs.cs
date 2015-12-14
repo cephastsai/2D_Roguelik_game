@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RuneManagerCs : MonoBehaviour {
 	private Animator plane;
 	private Texture2D StartGame = null;
-	private GUISkin RandomSkin = null;
+	//private GUISkin RandomSkin = null;
 
 	private GameObject canvas = null;
 	private GameObject grid = null;
@@ -28,38 +28,11 @@ public class RuneManagerCs : MonoBehaviour {
 
     void Awake(){
         StartGame = (Texture2D)Resources.Load("Image/StartGame");
-		RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
+		//RandomSkin =  (GUISkin)Resources.Load("GUISkin/RandomButton");
 	}
 
 	void OnGUI()
     {
-        //GUI.skin = RandomSkin;
-        /*if (GUILayout.Button("Start Game"))
-		{
-			CheckPoint +=1;
-			//plane.SetBool("Idle", false);
-			for(int temp=0;temp<grid.transform.childCount;temp++){
-				if (RuneList [temp] == '1'){
-					ListNo[j] = temp;
-					j++;
-					//K = new int(Random.Range(1,j));
-				}
-			}
-            K = UnityEngine.Random.Range(1, j);
-
-            GameObject RuneRandom = new GameObject("RuneRandom");
-            RuneRandom.AddComponent<MeshRenderer>();
-            RuneRandom.AddComponent<MeshFilter>();
-            RuneRandom.AddComponent<SetRuneMaterial>().init(K); //test
-
-            print("RandomNum:" + ListNo[K]); //隨機產生數字
-
-			SceneManager.CurrentRuneID = K;
-			Story.rune = K;
-
-			Application.LoadLevel("Main");
-        }*/
-
         //點擊圖片按鈕測試
         if (GUI.Button(new Rect(30, 40, StartGame.width, StartGame.height), StartGame) && CheckPoint == 0)
         {
