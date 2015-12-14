@@ -12,7 +12,7 @@ public class InformationReaderCs : MonoBehaviour {
 	public static StreamWriter streamWriter = null;
 	public static string text = " ";
 	//public static int[,] runeinfo = new int[50,20];
-	public static int[] levelrune = new int[15];
+	public static int[] levelrune = new int[20];
     //public static int DieCount = 0;
 
 	// Use this for initialization
