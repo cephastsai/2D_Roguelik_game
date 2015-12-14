@@ -9,6 +9,7 @@ namespace Completed
 		public int playerMaxFoodPoint;
 		public int RuneCount;
 		public int DieCount;
+		private GameObject restartgame = null;
 		private int l =0;
 		private int size1 = 50;
 		private int size2 = 50;
@@ -32,6 +33,8 @@ namespace Completed
 			playerMaxFoodPoint = PlayerPrefs.GetInt("playerMaxFoodPoint", playerMaxFoodPoint);
 			RuneCount = PlayerPrefs.GetInt("RuneCount", RuneCount);
 			DieCount = PlayerPrefs.GetInt("DieCount", DieCount);
+			restartgame = GameObject.Find("RestartGame");
+			restartgame.SetActive(false);
 		}
 
 		IEnumerator Level(){
@@ -66,7 +69,7 @@ namespace Completed
 			GameObject.Find ("Point(2)").GetComponent<UILabel> ().text = food;
 			GameObject.Find ("Life(2)").GetComponent<UILabel> ().text = life;
 			GameObject.Find ("Rune(2)").GetComponent<UILabel> ().text = rune;
-            GameObject.Find("RestartGame").SetActive(false);
+            //GameObject.Find("RestartGame").SetActive(false);
             //GameObject.Find("Restart") = restartBool;
             if (l1 && level>l) {
 				StartCoroutine ("Level");
@@ -116,7 +119,7 @@ namespace Completed
 
             if(restartBool == true)
             {
-                GameObject.Find("RestartGame").SetActive(true);
+                restartgame.SetActive(true);
             }
 		}
 	}
