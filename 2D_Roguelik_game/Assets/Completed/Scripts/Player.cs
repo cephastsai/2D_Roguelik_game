@@ -361,14 +361,12 @@ namespace Completed
 			{
 				food = 0;
 				foodText.text = "Food:" + food;
-				if(GameObject.Find("RuneAbilityManager").GetComponent<AddFoodPercentage>() != null){
 
-				}else{
-					//DeathFXVer2 = ()Resources.Load("DeathFXVer2",typeof(Gameobject));
-					Instantiate (DeathFXVer2, this.transform.position, Quaternion.identity);
-					gameovertime = Time.time;
-					gameoverflag = true;
-				}
+				//DeathFXVer2 = ()Resources.Load("DeathFXVer2",typeof(Gameobject));
+				Instantiate (DeathFXVer2, this.transform.position, Quaternion.identity);
+				gameovertime = Time.time;
+				gameoverflag = true;
+				
     		}
 		}
 
