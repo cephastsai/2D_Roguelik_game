@@ -12,7 +12,7 @@ public class AddFoodPercentage : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(SetupRuneAbility.startgame == true && temp == true){
+		if(SetupRuneAbility.endgame == true && temp == true){
 			AbilityAddFoodPercentage();
 		}
 	}

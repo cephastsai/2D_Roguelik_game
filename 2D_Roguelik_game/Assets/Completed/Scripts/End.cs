@@ -111,12 +111,11 @@ namespace Completed
             }
 			if (GameObject.Find ("Life(2)").GetComponent<UILabel> ().fontSize >= 30) {
 				size4--;
-				restartBool = true;
 			}
 
             if(restartBool == true)
             {
-                GameObject.Find("RestartGame").transform.localPosition = new Vector3(219, -66, 0);
+                GameObject.Find("RestartGame").transform.localPosition = new Vector3(0, -3, 0);
             }
 		}
 	}
