@@ -26,15 +26,15 @@ public class Menu : MonoBehaviour {
 		GameObject.Find ("Fog3").AddComponent<SetFog1Material> ();
 		GameObject.Find ("Fog4").AddComponent<SetFog2Material> ();
         //GameObject.Find("Logo").SetActive(true);
-        StartCoroutine("EnterRuneLevel");
+        //StartCoroutine("EnterRuneLevel");
     }
 
-    IEnumerator EnterRuneLevel()
+    /*IEnumerator EnterRuneLevel()
     {
         yield return new WaitForSeconds(3);
         GameObject.Find("Logo").SetActive(false);
         //print("444");
-    }
+    }*/
 
     // Update is called once per frame
     void Update () {
