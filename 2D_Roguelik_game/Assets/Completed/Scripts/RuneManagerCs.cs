@@ -55,7 +55,7 @@ public class RuneManagerCs : MonoBehaviour {
         print("RandomNum:" + (ListNo[K] + 1)); //隨機產生數字
 
         SceneManager.CurrentRuneID = K + 1;
-        //Story.rune = K + 1;
+        Story.rune = K + 1;
 
         //隨機圖騰置中
         canvas = GameObject.Find("Canvas");

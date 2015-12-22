@@ -72,6 +72,8 @@ namespace Completed
             //Get a component reference to the attached BoardManager script
             boardScript = GetComponent<BoardManager>();
 
+			gameObject.AddComponent<Story>().init();
+
             //Call the InitGame function to initialize the first level 
             InitGame();	
 
@@ -96,7 +98,7 @@ namespace Completed
 				InitGame();
 			}
            
-			
+			Story.Level = level;
             SceneManager.menu_flag = false;
         }
 		

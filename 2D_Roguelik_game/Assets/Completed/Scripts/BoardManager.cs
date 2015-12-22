@@ -133,6 +133,8 @@ namespace Completed
 			//print(SceneManager.CurrentRuneID);
 			CurrentRuneUI = new GameObject ("CurrentRune");
 			CurrentRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
+			CurrentRuneUI.AddComponent<BoxCollider2D>();
+			CurrentRuneUI.AddComponent<CurrentRune>();
 			//CurrentRuneUI.AddComponent<MeshRenderer>();
 			//CurrentRuneUI.AddComponent<MeshFilter>();
 			//CurrentRuneUI.AddComponent<SetRuneMaterial>().init(SceneManager.CurrentRuneID);
@@ -163,7 +165,7 @@ namespace Completed
 		//LayoutObjectAtRandom accepts an array of game objects to choose from along with a minimum and maximum range for the number of objects to create.
 		public void LayoutObjectAtRandom (GameObject[] tileArray, int minimum, int maximum , bool addmat)
 		{
-			print(addmat);
+			//print(addmat);
 			//Choose a random number of objects to instantiate within the minimum and maximum limits
 			int objectCount = Random.Range (minimum, maximum+1);
 			
