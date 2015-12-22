@@ -23,6 +23,15 @@ public class Story : MonoBehaviour {
 	public static int Level;
 	public static int rune;
 
+	//GameObject
+	private GameObject Player = null;
+
+	//To determine story 
+	private int LestLevel = 0;
+	private bool ToDetermineFlag = false;
+	private string CurrentText;
+	private bool LevelStoryflag = false;
+
 	public void init(){
 
 
@@ -30,6 +39,7 @@ public class Story : MonoBehaviour {
 
 	void Start () {
 
+		
 		//read txt
 		StreamReader streamReader  = new StreamReader("story.txt", System.Text.Encoding.Default);
 		
@@ -61,6 +71,36 @@ public class Story : MonoBehaviour {
 	
 
 	void Update () {
-	
+
+		if(Level != LestLevel){
+			ToDetermineFlag = true;
+			LevelStoryflag = false;
+		}
+
+		//Determine story
+		if(ToDetermineFlag){
+			for(int i =0;i<StoryList.Count; i++){
+				if(StoryList[i].Level == Level){
+					if(StoryList[i].RuneID == rune || StoryList[i].RuneID == -1){
+						CurrentText = StoryList[i].StoryInfo;
+						LestLevel = Level;
+						ToDetermineFlag = false;
+					}
+				}
+			}
+		}
+
+		//set gameobject
+		Player = GameObject.Find("Player");
+
+		if(Player.transform.position.x + Player.transform.position.y > 7 && !LevelStoryflag){
+			GameObject.Find("StoryInfoBG").GetComponent<TextIInfoOutput>().AddStringToQue(CurrentText,1);
+			LevelStoryflag = true;
+		}
+
+
+
+
+
 	}
 }
