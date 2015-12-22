@@ -87,24 +87,16 @@ namespace Completed
 		//This is called each time a scene is loaded.
 		void OnLevelWasLoaded(int index) //當場景載入就不會執行(loader>gamemanager)
 		{
-			Story.info_on = true;
-			Story.level_story = false;
-			Story.time = Time.time;
-			//print(SceneManager.menu_flag);
-            if (SceneManager.menu_flag == false)
-            {
-				Story.textcolor.a = 1f;
-				Story.storyon = true;
-                //Add one to our level number.
-                level++;
+			if (SceneManager.menu_flag == false){
+				//Add one to our level number.
+				level++;
 				print(level);
-				Story.Level = level;
-                //Call InitGame to initialize our level.
-                InitGame();
-			}else{
-	
-				Story.Level = 1;
+				
+				//Call InitGame to initialize our level.
+				InitGame();
 			}
+           
+			
             SceneManager.menu_flag = false;
         }
 		

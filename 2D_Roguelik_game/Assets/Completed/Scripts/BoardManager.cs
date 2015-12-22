@@ -103,7 +103,7 @@ namespace Completed
 			LevelRuneUI = new GameObject ("LeveltRune");		
 			LevelRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ InformationReaderCs.levelrune[level].ToString(),typeof(Sprite));
 			LevelRuneUI.transform.localScale = new Vector3(0.5f,0.5f,1);
-			LevelRuneUI.transform.position = new Vector3(9.5f,5f,0f);
+			LevelRuneUI.transform.position = new Vector3(-3.6f,0.8f,0f);
 
 
 			SetupRuneAbilityManager(InformationReaderCs.levelrune[level]);
@@ -137,7 +137,7 @@ namespace Completed
 			//CurrentRuneUI.AddComponent<MeshFilter>();
 			//CurrentRuneUI.AddComponent<SetRuneMaterial>().init(SceneManager.CurrentRuneID);
 			CurrentRuneUI.transform.localScale = new Vector3(0.4f,0.4f,1);
-			CurrentRuneUI.transform.position = new Vector3(-3.7f,5f,0f);
+			CurrentRuneUI.transform.position = new Vector3(-3.6f,2.7f,0f);
 		}
 		
 		
