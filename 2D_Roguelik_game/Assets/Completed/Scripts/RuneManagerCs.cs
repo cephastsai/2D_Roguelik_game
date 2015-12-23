@@ -66,7 +66,7 @@ public class RuneManagerCs : MonoBehaviour {
 		//GameObject.Find("Rune(Clone)").transform.SetParent(grid.transform,false);
 
         aniController = canvas.transform.GetChild(1).GetChild(0).GetChild(K).gameObject.GetComponent<Animator>();
-		/*
+
         if (K == 0)
         {
             grid.transform.position = new Vector3(-116, 45, 0);
@@ -102,7 +102,7 @@ public class RuneManagerCs : MonoBehaviour {
             grid.transform.position = new Vector3(200, 45, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
-        }*/
+        }
     }
 
 	/*void OnGUI()
@@ -238,6 +238,7 @@ public class RuneManagerCs : MonoBehaviour {
 
     void Update()
     {
+		/*
         //調整圖騰主要拉軸固定問題
         if (grid.transform.position.x > 260)
         {
@@ -246,7 +247,7 @@ public class RuneManagerCs : MonoBehaviour {
         if(grid.transform.position.x <-110)
         {
             grid.transform.position = new Vector3(-110, 37, 0);
-        }
+        }*/
     }
 
 }
