@@ -8,7 +8,8 @@ public class GridUI : MonoBehaviour {
 
 	void Start () {
 
-		//GridLong = gameObject.getChild
+		GridLong = transform.GetChild(0).position.x - transform.GetChild(transform.childCount).position.x;
+		print(GridLong);
 	}
 	
 

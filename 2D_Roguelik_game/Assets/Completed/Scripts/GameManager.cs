@@ -95,7 +95,7 @@ namespace Completed
 			if (SceneManager.menu_flag == false){
 				//Add one to our level number.
 				level++;
-				print(level);
+				//print(level);
 				
 				//Call InitGame to initialize our level.
 				InitGame();
@@ -148,6 +148,7 @@ namespace Completed
 			levelImage.SetActive(false);
 
 			PlayerBornTime = Time.time;
+			PlayerBornTimeSetup = false;
 			Instantiate (Resources.Load("Prefabs/CharacterBornFXVer2",typeof(GameObject)), this.transform.position, Quaternion.identity);
 			GameObject.Find("CharacterBornFXVer2(Clone)").AddComponent<SelfDestroyCS>().SetDestroyTime(1.2f);
 			//Set doingSetup to false allowing player to move again.
@@ -157,7 +158,9 @@ namespace Completed
 		//Update is called every frame.
 		void Update()
 		{
+			print(Time.time - PlayerBornTime + ","+ !PlayerBornTimeSetup+ ","+!levelImage.activeInHierarchy);
 			if(Time.time - PlayerBornTime >= 1.5f && !PlayerBornTimeSetup && !levelImage.activeInHierarchy){
+				print("go");
 				doingSetup = false;
 				playersTurn = true;
 				PlayerBornTimeSetup = true;
