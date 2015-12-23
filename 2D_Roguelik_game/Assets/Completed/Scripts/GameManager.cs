@@ -127,6 +127,7 @@ namespace Completed
             //Set the text of levelText to the string "Day" and append the current level number.
 			print(level);
             levelText.text = "Day : " + level;
+			levelImage.transform.GetChild(0).GetComponent<Text>().text = "Day  " + level;
 			
 			//Set levelImage to active blocking player's view of the game board during setup.
 			levelImage.SetActive(true);
@@ -158,7 +159,6 @@ namespace Completed
 		//Update is called every frame.
 		void Update()
 		{
-			print(Time.time - PlayerBornTime + ","+ !PlayerBornTimeSetup+ ","+!levelImage.activeInHierarchy);
 			if(Time.time - PlayerBornTime >= 1.5f && !PlayerBornTimeSetup && !levelImage.activeInHierarchy){
 				print("go");
 				doingSetup = false;

@@ -243,7 +243,8 @@ namespace Completed
 				food += pointsPerFood;
 
 				//HealingFX = (GameObject)Resources.Load("Prefabs/HealingFX",typeof(GameObject));
-				Instantiate (Resources.Load("Prefabs/HealingFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
+				other.gameObject.GetComponent<FoodHealing>().healing();
+				//Instantiate (Resources.Load("Prefabs/HealingFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
 
                 pointText.text = "+" + pointsPerFood;
                 if (food > maxFood)
@@ -279,7 +280,8 @@ namespace Completed
 				//Add pointsPerSoda to players food points total
 				food += pointsPerSoda;
 
-				Instantiate (Resources.Load("Prefabs/HealingFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
+				other.gameObject.GetComponent<FoodHealing>().healing();
+				//Instantiate (Resources.Load("Prefabs/HealingFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
 
                 pointText.text = "+" + pointsPerSoda;
                 if (food > maxFood)
@@ -336,6 +338,7 @@ namespace Completed
 		{
 			//Set the trigger for the player animator to transition to the playerHit animation.
 			animator.SetTrigger ("playerHit");
+
 
 			Instantiate (Resources.Load("Prefabs/HurtFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
 			

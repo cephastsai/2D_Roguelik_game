@@ -8,8 +8,12 @@ public class GridUI : MonoBehaviour {
 
 	void Start () {
 
-		GridLong = transform.GetChild(0).position.x - transform.GetChild(transform.childCount).position.x;
-		print(GridLong);
+		GridLong = transform.GetChild(transform.childCount-1).GetComponent<RectTransform>().position.y - transform.GetChild(0).GetComponent<RectTransform>().position.y ;
+		/*print(GridLong);
+		print(transform.GetChild(transform.childCount-1).GetComponent<RectTransform>().anchoredPosition);
+		print( transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition);
+		print(transform.GetChild(transform.childCount-1));
+		print(transform.GetChild(0));*/
 	}
 	
 

@@ -69,37 +69,37 @@ public class RuneManagerCs : MonoBehaviour {
 
         if (K == 0)
         {
-            grid.transform.position = new Vector3(-116, 45, 0);
+            grid.transform.position = new Vector3(-60, 30, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
         }
         else if (K == 1)
         {
-            grid.transform.position = new Vector3(-50, 45, 0);
+			grid.transform.position = new Vector3(-30, 30, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
         }
         else if (K == 2)
         {
-            grid.transform.position = new Vector3(15, 45, 0);
+			grid.transform.position = new Vector3(0, 30, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
         }
         else if (K == 3)
         {
-            grid.transform.position = new Vector3(80, 45, 0);
+			grid.transform.position = new Vector3(30, 30, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
         }
         else if (K == 4)
         {
-            grid.transform.position = new Vector3(137, 45, 0);
+			grid.transform.position = new Vector3(60, 30, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
         }
         else if (K == 5)
         {
-            grid.transform.position = new Vector3(200, 45, 0);
+			grid.transform.position = new Vector3(90, 30, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
         }
