@@ -3,15 +3,21 @@ using System.Collections;
 
 public class SelfDestroyCS : MonoBehaviour {
 	public float creationTime = 0f;
-	// Use this for initialization
+	private float DestroyTime = 3f;
+
+
 	void Start () {
 		creationTime = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Time.time > (creationTime+3))
+		if(Time.time > (creationTime+DestroyTime))
 		Destroy(gameObject);
 		
-}
+	}
+
+	public void SetDestroyTime(float time){
+		DestroyTime = time;
+	}
 }

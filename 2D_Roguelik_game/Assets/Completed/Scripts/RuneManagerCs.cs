@@ -52,6 +52,9 @@ public class RuneManagerCs : MonoBehaviour {
         RuneRandom.AddComponent<MeshFilter>();
         RuneRandom.AddComponent<Animator>();
 
+		//Instantiate (Resources.Load("Prefabs/Rune",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
+
+
         print("RandomNum:" + (ListNo[K] + 1)); //隨機產生數字
 
         SceneManager.CurrentRuneID = K + 1;
@@ -60,9 +63,10 @@ public class RuneManagerCs : MonoBehaviour {
         //隨機圖騰置中
         canvas = GameObject.Find("Canvas");
         startRune = canvas.transform.GetChild(1).GetChild(0).GetChild(K).gameObject;
+		//GameObject.Find("Rune(Clone)").transform.SetParent(grid.transform,false);
 
         aniController = canvas.transform.GetChild(1).GetChild(0).GetChild(K).gameObject.GetComponent<Animator>();
-
+		/*
         if (K == 0)
         {
             grid.transform.position = new Vector3(-116, 45, 0);
@@ -98,7 +102,7 @@ public class RuneManagerCs : MonoBehaviour {
             grid.transform.position = new Vector3(200, 45, 0);
             aniController.SetInteger("Number", 1);
             StartCoroutine("EnterLevel");
-        }
+        }*/
     }
 
 	/*void OnGUI()
@@ -194,7 +198,7 @@ public class RuneManagerCs : MonoBehaviour {
 		//find gameobject "gird"
 		canvas = GameObject.Find("Canvas");
 		grid = canvas.transform.GetChild(1).GetChild(0).gameObject;
-		grid.transform.position = new Vector3(0,45,0);
+		//grid.transform.position = new Vector3(0,45,0);
 
         // add component "SetRuneMaterial" ,all child
         /*

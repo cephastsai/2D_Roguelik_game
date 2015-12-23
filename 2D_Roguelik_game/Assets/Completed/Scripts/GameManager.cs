@@ -18,7 +18,7 @@ namespace Completed
 		public int playerFoodPoints = 100;						//Starting value for Player food points.
         public int playerMaxFoodPoint = 100;
 		public static GameManager instance = null;				//Static instance of GameManager which allows it to be accessed by any other script.
-		[HideInInspector] public bool playersTurn = true;       //Boolean to check if it's players turn, hidden in inspector but public.
+		/*[HideInInspector] */public bool playersTurn = false;       //Boolean to check if it's players turn, hidden in inspector but public.
 
         public int starve;
         public int max;
@@ -39,6 +39,9 @@ namespace Completed
         private FileInfo theSourceFile = null;
         private StreamReader StreamReader = null;
         private string text = " ";
+
+		private float PlayerBornTime;
+		private bool PlayerBornTimeSetup = false;
 
 
 
@@ -107,6 +110,7 @@ namespace Completed
 		{
 			//While doingSetup is true the player can't move, prevent player from moving while title card is up.
 			doingSetup = true;
+			playersTurn = false;
 			//Player.runed = false;
 
 			//Get a reference to our image LevelImage by finding it by name.
@@ -142,14 +146,23 @@ namespace Completed
 		{
 			//Disable the levelImage gameObject.
 			levelImage.SetActive(false);
-			
+
+			PlayerBornTime = Time.time;
+			Instantiate (Resources.Load("Prefabs/CharacterBornFXVer2",typeof(GameObject)), this.transform.position, Quaternion.identity);
+			GameObject.Find("CharacterBornFXVer2(Clone)").AddComponent<SelfDestroyCS>().SetDestroyTime(1.2f);
 			//Set doingSetup to false allowing player to move again.
-			doingSetup = false;
+
 		}
 		
 		//Update is called every frame.
 		void Update()
 		{
+			if(Time.time - PlayerBornTime >= 1.5f && !PlayerBornTimeSetup && !levelImage.activeInHierarchy){
+				doingSetup = false;
+				playersTurn = true;
+				PlayerBornTimeSetup = true;
+			}
+
 			//levelText.text = "Day " + level;
 			//Check that playersTurn or enemiesMoving or doingSetup are not currently true.
 			if(playersTurn || enemiesMoving || doingSetup)
