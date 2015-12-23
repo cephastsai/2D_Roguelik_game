@@ -19,9 +19,9 @@ public class TextIInfoOutput : MonoBehaviour {
 				PerAlphaLose = 2f;
 				break;
 			case 2:
-				ExistenceTime = 0.7f;
+				ExistenceTime = 1.5f;
 				ColdDownTime = 0.3f;
-				PerAlphaLose = 6f;
+				PerAlphaLose = 4f;
 				break;
 			}
 		}

@@ -24,7 +24,7 @@ namespace Completed
 		public AudioClip gameOverSound;				//Audio clip to play when player dies.
 		
 		private Animator animator;					//Used to store a reference to the Player's animator component.
-		private int food;							//Used to store player food points total during level.
+		public int food;							//Used to store player food points total during level.
         private int maxFood;
 		private Vector2 touchOrigin = -Vector2.one;	//Used to store location of screen touch origin for mobile controls.
 		public static bool runed = false;
@@ -32,7 +32,6 @@ namespace Completed
 
 		private bool gameoverflag = false;
 		private float gameovertime = 0f;
-		public GameObject DeathFXVer2;
 
 		//Start overrides the Start function of MovingObject
 		protected override void Start ()
@@ -243,6 +242,9 @@ namespace Completed
 				//Add pointsPerFood to the players current food total.
 				food += pointsPerFood;
 
+				//HealingFX = (GameObject)Resources.Load("Prefabs/HealingFX",typeof(GameObject));
+				Instantiate (Resources.Load("Prefabs/HealingFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
+
                 pointText.text = "+" + pointsPerFood;
                 if (food > maxFood)
                 {
@@ -276,6 +278,8 @@ namespace Completed
 			{
 				//Add pointsPerSoda to players food points total
 				food += pointsPerSoda;
+
+				Instantiate (Resources.Load("Prefabs/HealingFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
 
                 pointText.text = "+" + pointsPerSoda;
                 if (food > maxFood)
@@ -332,6 +336,8 @@ namespace Completed
 		{
 			//Set the trigger for the player animator to transition to the playerHit animation.
 			animator.SetTrigger ("playerHit");
+
+			Instantiate (Resources.Load("Prefabs/HurtFX",typeof(GameObject)), this.transform.position, Quaternion.Euler(-90, 0, 0));
 			
 			//Subtract lost food points from the players total.
 			food -= loss;
@@ -363,8 +369,9 @@ namespace Completed
 				food = 0;
 				foodText.text = "Food:" + food;
 
-				//DeathFXVer2 = ()Resources.Load("DeathFXVer2",typeof(Gameobject));
-				Instantiate (DeathFXVer2, this.transform.position, Quaternion.identity);
+				Instantiate (Resources.Load("Prefabs/DeathFXVer2",typeof(GameObject)), this.transform.position, Quaternion.identity);
+				Destroy(gameObject.GetComponent<SpriteRenderer>()); 
+
 				gameovertime = Time.time;
 				gameoverflag = true;
 				
@@ -402,6 +409,7 @@ namespace Completed
 				foodText.text = "Food: " + food;
 			}
 		}
+
 	}
 }
 
