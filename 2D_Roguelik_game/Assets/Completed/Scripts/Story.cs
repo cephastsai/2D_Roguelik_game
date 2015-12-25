@@ -38,7 +38,6 @@ public class Story : MonoBehaviour {
 	}
 
 	void Start () {
-
 		
 		//read txt
 		StreamReader streamReader  = new StreamReader("story.txt", System.Text.Encoding.Default);
@@ -48,10 +47,12 @@ public class Story : MonoBehaviour {
 		}
 
 		//split txt
-		storyinfo = new string[30];
+		storyinfo = new string[50];
 		storyinfo = storystring.Split(new char[] { '|' });
 
-		for(int i =0; i < storyinfo.Length; i++){
+
+
+		for(int i =0; i < storyinfo.Length-1; i++){
 			string[] temp = new string[5];
 			temp = storyinfo[i].Split(new char[] { ',' });
 
@@ -61,6 +62,7 @@ public class Story : MonoBehaviour {
 			storytemp.StoryInfo = temp[2];
 			StoryList.Add(storytemp);
 		}
+
 		//print(Level +","+rune);
 		/*
 		for(int j =0;j<StoryList.Count;j++){

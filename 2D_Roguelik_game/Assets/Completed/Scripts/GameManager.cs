@@ -160,7 +160,7 @@ namespace Completed
 		void Update()
 		{
 			if(Time.time - PlayerBornTime >= 1.5f && !PlayerBornTimeSetup && !levelImage.activeInHierarchy){
-				print("go");
+				//print("go");
 				doingSetup = false;
 				playersTurn = true;
 				PlayerBornTimeSetup = true;
