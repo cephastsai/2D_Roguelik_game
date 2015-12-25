@@ -126,7 +126,7 @@ namespace Completed
 
             //Set the text of levelText to the string "Day" and append the current level number.
 			print(level);
-            levelText.text = "Day : " + level;
+            levelText.text = "Day: " + level;
 			levelImage.transform.GetChild(0).GetComponent<Text>().text = "Day  " + level;
 			
 			//Set levelImage to active blocking player's view of the game board during setup.
