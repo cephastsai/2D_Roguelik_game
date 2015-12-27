@@ -5,12 +5,11 @@ public class AddFood : MonoBehaviour {
 
 	private bool temp = true;
 	GameObject player = null;
-	// Use this for initialization
+
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if(SetupRuneAbility.startgame == true && temp == true){
 			AbilityAddFood();
