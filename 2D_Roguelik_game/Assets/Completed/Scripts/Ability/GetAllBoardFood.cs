@@ -11,12 +11,13 @@ public class GetAllBoardFood : MonoBehaviour {
 	private int addfood;
 	
 	void Start () {
-		
+		player = GameObject.Find("Player");
 	}
 	
 	
 	void Update () {
 		if(SetupRuneAbility.startgame == true && temp == true){
+			Instantiate (Resources.Load("Prefabs/Ablilty6FX",typeof(GameObject)), new Vector3(3.49f,3.37f,0f), Quaternion.identity);
 			getAllBoardFood();
 		}
 	}
@@ -24,7 +25,7 @@ public class GetAllBoardFood : MonoBehaviour {
 	void getAllBoardFood(){
 		Food = GameObject.FindGameObjectsWithTag("Food");
 		Soda = GameObject.FindGameObjectsWithTag("Soda");
-		player = GameObject.Find("Player");
+
 
 		for(int i=0;i<Food.Length;i++){
 			Destroy(Food[i]);

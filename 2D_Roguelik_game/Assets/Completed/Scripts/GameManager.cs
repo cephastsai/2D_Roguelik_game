@@ -79,8 +79,6 @@ namespace Completed
 
             //Call the InitGame function to initialize the first level 
             InitGame();	
-
-			SetupRuneAbility.startgame = true;
             		 
         }
 
@@ -147,6 +145,7 @@ namespace Completed
 		{
 			//Disable the levelImage gameObject.
 			levelImage.SetActive(false);
+			SetupRuneAbility.startgame = true;
 
 			PlayerBornTime = Time.time;
 			PlayerBornTimeSetup = false;
@@ -197,6 +196,8 @@ namespace Completed
 
             //Enable black background image gameObject.
             levelImage.SetActive(true);
+
+			SetupRuneAbility.startgame = false;
 			
 			//Disable this GameManager.
 			enabled = false;

@@ -163,7 +163,7 @@ namespace Completed
 		
 		
 		//LayoutObjectAtRandom accepts an array of game objects to choose from along with a minimum and maximum range for the number of objects to create.
-		public void LayoutObjectAtRandom (GameObject[] tileArray, int minimum, int maximum , bool addmat)
+		public void LayoutObjectAtRandom (GameObject[] tileArray, int minimum, int maximum , bool addmat, bool morefood)
 		{
 			//print(addmat);
 			//Choose a random number of objects to instantiate within the minimum and maximum limits
@@ -187,6 +187,11 @@ namespace Completed
 					rend.sharedMaterial = boardmat;
 					boardmat.shader = Shader.Find("Legacy Shaders/Diffuse");
 				}
+
+				if(morefood){
+
+					Instantiate(Resources.Load("Prefabs/Ablilty1BFX",typeof(GameObject)),randomPosition , Quaternion.identity);
+				}
 			}
 		}
 		
@@ -201,16 +206,16 @@ namespace Completed
 			BoardSetup ();			
 
 			//Instantiate a random number of wall tiles based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum, true);
+			LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum, true, false);
 			
 			//Instantiate a random number of food tiles based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (foodTiles, foodCount.minimum, foodCount.maximum, false);
+			LayoutObjectAtRandom (foodTiles, foodCount.minimum, foodCount.maximum, false, false);
 			
 			//Determine number of enemies based on current level number, based on a logarithmic progression
 			int enemyCount = (int)Mathf.Log(level, 1.5f);
 			
 			//Instantiate a random number of enemies based on minimum and maximum, at randomized positions.
-			LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount,false);
+			LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount,false, false);
 			
 			//Instantiate the exit tile in the upper right hand corner of our game board
 			Instantiate (exit, new Vector3 (columns - 1, rows - 1, 0f), Quaternion.identity);

@@ -229,6 +229,8 @@ namespace Completed
 			if(other.tag == "Exit")
 			{
 				SetupRuneAbility.endgame = true;
+				SetupRuneAbility.startgame = false;
+
 				//Invoke the Restart function to start the next level with a delay of restartLevelDelay (default 1 second).
 				Invoke ("Restart", restartLevelDelay);
 				
