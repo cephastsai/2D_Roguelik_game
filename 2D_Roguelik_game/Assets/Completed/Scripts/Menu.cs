@@ -19,8 +19,8 @@ public class Menu : MonoBehaviour {
     // Use this for initialization
 
 	void Start () {
-		RuneManager = new GameObject("RuneManager");
-		RuneManager.AddComponent<RuneManagerCs>();
+		//RuneManager = new GameObject("RuneManager");
+		//RuneManager.AddComponent<RuneManagerCs>();
 		GameObject.Find ("Fog1").AddComponent<SetFog1Material> ();
 		GameObject.Find ("Fog2").AddComponent<SetFog2Material> ();
 		GameObject.Find ("Fog3").AddComponent<SetFog1Material> ();

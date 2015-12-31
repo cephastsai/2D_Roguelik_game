@@ -20,7 +20,7 @@ public class MoreFoodInBoard : MonoBehaviour {
 			moreFoodInBoard();
 		}
 
-		if(Time.time - timer > 1f && addfoodnum != addnum && startaddfood){
+		if(Time.time - timer > 0.5f && addfoodnum != addnum && startaddfood){
 
 			manager.GetComponent<Completed.BoardManager>().LayoutObjectAtRandom (manager.GetComponent<Completed.BoardManager>().foodTiles, 1, 1, false,true);
 

@@ -20,8 +20,9 @@ public class AddFoodPercentage : MonoBehaviour {
 			peritemp = false;
 		}
 
-		if(Ability2FX1.GetComponent<ParticleSystem>().IsAlive() == false && temp == true){
+		if(Ability2FX1 != null &&Ability2FX1.GetComponent<ParticleSystem>().IsAlive() == false && temp == true){
 			AbilityAddFoodPercentage();
+			Ability2FX1 = null;
 		}
 	}
 

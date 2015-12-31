@@ -7,8 +7,10 @@ public class StartGame : MonoBehaviour {
 
     void OnMouseDown()
     {
-        RuneManager = GameObject.Find("RuneManager");
-        RuneManager.GetComponent<RuneManagerCs>().random();
+        //RuneManager = GameObject.Find("RuneManager");
+        //RuneManager.GetComponent<RuneManagerCs>().random();
+
+		Application.LoadLevel("Main");
     }
 
 	// Use this for initialization
