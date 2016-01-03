@@ -151,6 +151,8 @@ namespace Completed
 			PlayerBornTimeSetup = false;
 			Instantiate (Resources.Load("Prefabs/CharacterBornFXVer2",typeof(GameObject)), this.transform.position, Quaternion.identity);
 			GameObject.Find("CharacterBornFXVer2(Clone)").AddComponent<SelfDestroyCS>().SetDestroyTime(1.2f);
+
+			GameObject.Find("Exit(Clone)").GetComponent<Exit>().InsExit();
 			//Set doingSetup to false allowing player to move again.
 
 		}

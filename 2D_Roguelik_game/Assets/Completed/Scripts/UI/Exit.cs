@@ -30,5 +30,9 @@ public class Exit : MonoBehaviour {
 		Destroy(GameObject.Find("ExitFXVer2(Clone)"));
 	}
 
+	public void InsExit(){
+		Instantiate (Resources.Load("Prefabs/ExitFXVer2",typeof(GameObject)), this.transform.position, Quaternion.Euler(180, 180, 0));
+	}
+
 
 }
