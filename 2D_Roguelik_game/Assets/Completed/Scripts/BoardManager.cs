@@ -97,6 +97,12 @@ namespace Completed
 					instance.transform.SetParent (boardHolder);
 				}
 			}
+			//magic circle
+			gridPositions.RemoveAt(14);
+			gridPositions.RemoveAt(14);
+			gridPositions.RemoveAt(18);
+			gridPositions.RemoveAt(18);
+
 			// set rune
 			int level = GameManager.instance.getlevel();
 
@@ -131,15 +137,16 @@ namespace Completed
 
 			//show current rune
 			//print(SceneManager.CurrentRuneID);
+			/*
 			CurrentRuneUI = new GameObject ("CurrentRune");
 			CurrentRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ SceneManager.CurrentRuneID.ToString(),typeof(Sprite));
 			CurrentRuneUI.AddComponent<BoxCollider2D>();
-			CurrentRuneUI.AddComponent<CurrentRune>();
+			CurrentRuneUI.AddComponent<CurrentRune>();*/
 			//CurrentRuneUI.AddComponent<MeshRenderer>();
 			//CurrentRuneUI.AddComponent<MeshFilter>();
 			//CurrentRuneUI.AddComponent<SetRuneMaterial>().init(SceneManager.CurrentRuneID);
-			CurrentRuneUI.transform.localScale = new Vector3(0.4f,0.4f,1);
-			CurrentRuneUI.transform.position = new Vector3(-3.6f,2.7f,0f);
+			/*CurrentRuneUI.transform.localScale = new Vector3(0.4f,0.4f,1);
+			CurrentRuneUI.transform.position = new Vector3(-3.6f,2.7f,0f);*/
 		}
 		
 		
