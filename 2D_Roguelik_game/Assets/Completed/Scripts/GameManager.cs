@@ -212,7 +212,7 @@ namespace Completed
             GetKey();
 
             //return;
-            Application.LoadLevel("End");
+            Application.LoadLevel("Main");
         }
 
         void GetKey()
