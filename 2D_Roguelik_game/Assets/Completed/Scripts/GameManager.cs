@@ -256,6 +256,10 @@ namespace Completed
 		public int getlevel(){
 			return level;
 		}
+
+		public void enemymove(){
+			StartCoroutine (MoveEnemies ());
+		}
 	}
 }
 
