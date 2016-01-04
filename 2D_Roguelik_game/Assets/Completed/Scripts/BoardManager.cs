@@ -106,8 +106,8 @@ namespace Completed
 			// set rune
 			int level = GameManager.instance.getlevel();
 
-			LevelRuneUI = new GameObject ("LeveltRune");		
-			LevelRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ InformationReaderCs.levelrune[level].ToString(),typeof(Sprite));
+			LevelRuneUI = GameObject.Find("LevelRune");		
+			LevelRuneUI.GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ InformationReaderCs.levelrune[level].ToString(),typeof(Sprite));
 			LevelRuneUI.transform.localScale = new Vector3(0.3f,0.3f,1);
 			LevelRuneUI.transform.position = new Vector3(-3.27f,7.34f,0f);
 
