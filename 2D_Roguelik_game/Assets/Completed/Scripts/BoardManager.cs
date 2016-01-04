@@ -108,8 +108,8 @@ namespace Completed
 
 			LevelRuneUI = new GameObject ("LeveltRune");		
 			LevelRuneUI.AddComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/rune"+ InformationReaderCs.levelrune[level].ToString(),typeof(Sprite));
-			LevelRuneUI.transform.localScale = new Vector3(0.5f,0.5f,1);
-			LevelRuneUI.transform.position = new Vector3(-3.6f,0.8f,0f);
+			LevelRuneUI.transform.localScale = new Vector3(0.3f,0.3f,1);
+			LevelRuneUI.transform.position = new Vector3(-3.27f,7.34f,0f);
 
 
 			SetupRuneAbilityManager(InformationReaderCs.levelrune[level]);

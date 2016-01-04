@@ -71,7 +71,7 @@ public class MagicCircle : MonoBehaviour {
 
 		if(Time.time - timer >= 1f && ToActivateFlag){
 			print("go");
-			GameObject.Find("GameManager(Clone)").GetComponent<Completed.GameManager>().enemymove();
+			//GameObject.Find("GameManager(Clone)").GetComponent<Completed.GameManager>().enemymove();
 			timer = Time.time;
 		}
 	}
@@ -81,7 +81,7 @@ public class MagicCircle : MonoBehaviour {
 		gameObject.GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Magic Circle_activate " +InformationReaderCs.levelrune[level].ToString(),typeof(Sprite));
 		//InformationReaderCs.levelrune[level].ToString()
 
-		GameObject.Find("MagicCircle").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Magic Circle",typeof(Sprite));
+		GameObject.Find("MagicCircle").GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("Image/Magic Circle " + InformationReaderCs.levelrune[level].ToString(),typeof(Sprite));
 	}
 	/*
 	private void OnCollisionEnter2D (Collider2D other){
