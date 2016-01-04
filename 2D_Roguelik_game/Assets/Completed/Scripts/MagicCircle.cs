@@ -61,6 +61,7 @@ public class MagicCircle : MonoBehaviour {
 		if(a >= 1){
 			OverActivate = true;
 			LevelMagicCircle.MagicCircleDone[level] = 1;
+			GameObject.Find("InterFace").transform.GetChild(5).GetComponent<LevelRuneLight>().ToActivateRuneLight(level);
 		}
 
 
@@ -70,7 +71,7 @@ public class MagicCircle : MonoBehaviour {
 		}
 
 		if(Time.time - timer >= 1f && ToActivateFlag){
-			print("go");
+
 			//GameObject.Find("GameManager(Clone)").GetComponent<Completed.GameManager>().enemymove();
 			timer = Time.time;
 		}

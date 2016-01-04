@@ -75,13 +75,13 @@ public class StageArrows : MonoBehaviour {
 			if(temp.y >TopPos.y){
 				break;
 			}
-			print(temp);
+			//print(temp);
 			StageArrowsPosition.Add(temp);
 		}
 	}
 
 	void LevelChange(int level, int Curlevel){
-		print(level +","+ Curlevel);
+		//print(level +","+ Curlevel);
 
 		int i=0;
 		startMove = true;	
