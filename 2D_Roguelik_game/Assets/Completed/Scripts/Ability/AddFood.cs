@@ -19,8 +19,8 @@ public class AddFood : MonoBehaviour {
 			Ability2FX1 = Instantiate (Resources.Load("Prefabs/Ability3FX 1",typeof(GameObject)), player.transform.position, Quaternion.identity) as GameObject ;
 			peritemp = false;
 		}
-		
-		if(Ability2FX1 != null &&Ability2FX1.GetComponent<ParticleSystem>().IsAlive() == false && temp == true){
+		//&&Ability2FX1.GetComponent<ParticleSystem>().IsAlive() == false
+		if(Ability2FX1 != null && temp == true){
 			AbilityAddFoodPercentage();
 			Ability2FX1 = null;
 		}

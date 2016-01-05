@@ -112,20 +112,20 @@ namespace Completed
 			//Player.runed = false;
 
 			//Get a reference to our image LevelImage by finding it by name.
-			levelImage = GameObject.Find("LevelImage");
+			levelImage = GameObject.Find("blackBG");
 			//bug 001
 			canvasBGImage = levelImage.GetComponent<Image>();
-			canvasBGImage.sprite = (Sprite)Resources.Load("blackBG",typeof(Sprite));
+			//canvasBGImage.sprite = (Sprite)Resources.Load("blackBG",typeof(Sprite));
 
 			//Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
 			levelText = GameObject.Find("LevelText").GetComponent<Text>();
-            maxpointText = GameObject.Find("MaxPointText").GetComponent<Text>();
+            //maxpointText = GameObject.Find("MaxPointText").GetComponent<Text>();
             //pointText = GameObject.Find("PointText").GetComponent<Text>();
 
             //Set the text of levelText to the string "Day" and append the current level number.
 			print(level);
             levelText.text = "Day: " + level;
-			levelImage.transform.GetChild(0).GetComponent<Text>().text = "Day  " + level;
+			GameObject.Find("BGLevelText").GetComponent<Text>().text = "Day  " + level;
 			
 			//Set levelImage to active blocking player's view of the game board during setup.
 			levelImage.SetActive(true);
@@ -145,6 +145,7 @@ namespace Completed
 		{
 			//Disable the levelImage gameObject.
 			levelImage.SetActive(false);
+			GameObject.Find("BGLevelText").GetComponent<Text>().text = "";
 			SetupRuneAbility.startgame = true;
 
 			PlayerBornTime = Time.time;
@@ -261,6 +262,10 @@ namespace Completed
 
 		public void enemymove(){
 			StartCoroutine (MoveEnemies ());
+		}
+
+		public void changelevel(int Changelevel){
+			level = Changelevel;
 		}
 	}
 }

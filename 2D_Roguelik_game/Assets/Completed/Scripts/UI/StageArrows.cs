@@ -71,10 +71,6 @@ public class StageArrows : MonoBehaviour {
 		StageArrowsPosition.Add(ButtomPos);
 		for(int i = 1;i < StageNum; i++){
 			Vector3 temp = new Vector3(ButtomPos.x, ButtomPos.y +0.75f *(float)i, ButtomPos.z);
-
-			if(temp.y >TopPos.y){
-				break;
-			}
 			//print(temp);
 			StageArrowsPosition.Add(temp);
 		}
