@@ -49,11 +49,11 @@ public class MagicCircle : MonoBehaviour {
 		if(!OverActivate){
 			if(ToActivateFlag){
 				if(a <= 1){
-					a += 0.5f/255f;
+					a += 1f/255f;
 				}
 			}else{
 				if(a >=0){
-					a -= 0.5f/255f;
+					a -= 1f/255f;
 				}
 			}
 		}

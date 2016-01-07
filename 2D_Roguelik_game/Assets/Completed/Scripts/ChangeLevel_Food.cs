@@ -20,6 +20,7 @@ public class ChangeLevel_Food : MonoBehaviour {
 	void OnMouseDown(){
 		food = player.GetComponent<Completed.Player>().food;		
 		GameObject.Find("GameManager(Clone)").GetComponent<Completed.GameManager>().changelevel((food/20)-1);
+		SetupRuneAbility.startgame = false;
 		Application.LoadLevel("Main");
 	}
 }

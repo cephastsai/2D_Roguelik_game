@@ -59,6 +59,7 @@ public class InformationReaderCs : MonoBehaviour {
 
 	}
 	//int level,int posX,int posY,int runeID
+	/*
 	public static void SaveFile(int level,int posX,int posY,int runeID){
 		//print(text);
 
@@ -83,7 +84,7 @@ public class InformationReaderCs : MonoBehaviour {
 		writer.Write(text);
 		writer.Close();
 		writer.Dispose();
-	}
+	}*/
 
 	//public static void LoadRuneInfo(string[] Info_str){
 	public static void LoadRuneInfo(){

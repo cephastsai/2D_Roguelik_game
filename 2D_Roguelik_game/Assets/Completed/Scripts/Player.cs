@@ -387,7 +387,7 @@ namespace Completed
 
 			Player.runed = false;
 			//0,(int)transform.position.x,(int)transform.position.y,0
-			InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,RuneManagerCs.K);
+			//InformationReaderCs.SaveFile(GameManager.instance.getlevel(),(int)transform.position.x,(int)transform.position.y,RuneManagerCs.K);
 			//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
 			SoundManager.instance.PlaySingle (gameOverSound);
 			

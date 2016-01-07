@@ -18,6 +18,6 @@ public class energyUIslider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		food = player.GetComponent<Completed.Player>().food;
-		slider.sliderValue = (float)food/200;
+		slider.sliderValue =  1f - (float)food/200f;
 	}
 }

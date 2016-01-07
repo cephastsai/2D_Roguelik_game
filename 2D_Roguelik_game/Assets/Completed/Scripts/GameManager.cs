@@ -75,7 +75,7 @@ namespace Completed
             //Get a component reference to the attached BoardManager script
             boardScript = GetComponent<BoardManager>();
 
-			gameObject.AddComponent<Story>().init();
+			//gameObject.AddComponent<Story>().init();
 
             //Call the InitGame function to initialize the first level 
             InitGame();	
@@ -153,7 +153,7 @@ namespace Completed
 			Instantiate (Resources.Load("Prefabs/CharacterBornFXVer2",typeof(GameObject)), this.transform.position, Quaternion.identity);
 			GameObject.Find("CharacterBornFXVer2(Clone)").AddComponent<SelfDestroyCS>().SetDestroyTime(1.2f);
 
-			GameObject.Find("Exit(Clone)").GetComponent<Exit>().InsExit();
+			//GameObject.Find("Exit(Clone)").GetComponent<Exit>().InsExit();
 			//Set doingSetup to false allowing player to move again.
 
 		}
