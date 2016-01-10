@@ -160,7 +160,7 @@ namespace Completed
 		
 		//Update is called every frame.
 		void Update()
-		{
+		{		
 			if(Time.time - PlayerBornTime >= 1.5f && !PlayerBornTimeSetup && !levelImage.activeInHierarchy){
 				//print("go");
 				doingSetup = false;

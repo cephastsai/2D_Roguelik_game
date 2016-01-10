@@ -14,7 +14,7 @@ public class InfoOutput : MonoBehaviour {
 			
 			switch(num){
 			case 1:
-				ExistenceTime = 2.5f;
+				ExistenceTime = 3f;
 				ColdDownTime = 1.5f;
 				PerAlphaLose = 2f;
 				break;
@@ -22,6 +22,11 @@ public class InfoOutput : MonoBehaviour {
 				ExistenceTime = 1.5f;
 				ColdDownTime = 0.3f;
 				PerAlphaLose = 4f;
+				break;
+			case 3:
+				ExistenceTime = 7f;
+				ColdDownTime = 2f;
+				PerAlphaLose = 1f;
 				break;
 			}
 		}
