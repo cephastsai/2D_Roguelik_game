@@ -147,8 +147,7 @@ namespace Completed
         void HideLevelImage()
 		{
 			//Disable the levelImage gameObject.
-			levelImage.SetActive(false);
-			GameObject.Find("BGLevelText").GetComponent<Text>().text = "";
+			SetStarrtImage();
 			SetupRuneAbility.startgame = true;
 
 			PlayerBornTime = Time.time;
@@ -163,7 +162,13 @@ namespace Completed
 		
 		//Update is called every frame.
 		void Update()
-		{			
+		{	
+			//changelevel
+			if(Input.GetKeyDown("]")){
+				changelevel(9);
+				Application.LoadLevel (Application.loadedLevel);
+			}
+
 			if(Time.time - PlayerBornTime >= 1.5f && !PlayerBornTimeSetup && !levelImage.activeInHierarchy){
 				//print("go");
 				doingSetup = false;
@@ -269,6 +274,11 @@ namespace Completed
 
 		public void changelevel(int Changelevel){
 			level = Changelevel;
+		}
+
+		public void SetStarrtImage(){
+			levelImage.SetActive(false);
+			GameObject.Find("BGLevelText").GetComponent<Text>().text = "";
 		}
 	}
 }

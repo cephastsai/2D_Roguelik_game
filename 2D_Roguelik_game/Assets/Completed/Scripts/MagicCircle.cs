@@ -6,10 +6,11 @@ public class MagicCircle : MonoBehaviour {
 	private int level;
 
 	private GameObject player = null;
+	private GameObject Exit = null;
 
-	private bool ToActivateFlag = false;
+	public bool ToActivateFlag = false;
 
-	private bool OverActivate = false;
+	public bool OverActivate = false;
 
 	private Color MagicActivateColor = new Vector4(1,1,1,0);
 	private float a = 0;
@@ -26,8 +27,10 @@ public class MagicCircle : MonoBehaviour {
 		//get player
 		player = GameObject.FindGameObjectWithTag("Player");
 
-		// get prefabs
+		// get GameObject
 		AlureFX = (GameObject)Resources.Load("Prefabs/AlureFX",typeof(GameObject));
+		Exit = GameObject.Find("Exit(Clone)");
+		Exit.SetActive(false);
 
 		level = GameObject.Find("GameManager(Clone)").GetComponent<Completed.GameManager>().getlevel();
 
@@ -43,22 +46,25 @@ public class MagicCircle : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(player.transform.position.x >= 3 && player.transform.position.x <= 4 && player.transform.position.y >= 3 && player.transform.position.y <= 4){
-			ToActivateFlag = true;
-
-			if(MagicCircleFX == null){
-				MagicCircleFX = Instantiate(AlureFX,transform.position,Quaternion.Euler(90, 0, 0)) as GameObject;
-				MagicCircleFX.GetComponent<ParticleSystem>().Simulate(PlayTime,true,true);
-				MagicCircleFX.GetComponent<ParticleSystem>().Play();
-			}
+		if(GameObject.Find("Text_BG").GetComponent<Newhand>().MagicCircleOn || !Newhand.Newhandflag){
+			if(player.transform.position.x >= 3 && player.transform.position.x <= 4 && player.transform.position.y >= 3 && player.transform.position.y <= 4){
+				ToActivateFlag = true;
+				
+				if(MagicCircleFX == null){
+					MagicCircleFX = Instantiate(AlureFX,transform.position,Quaternion.Euler(90, 0, 0)) as GameObject;
+					MagicCircleFX.GetComponent<ParticleSystem>().Simulate(PlayTime,true,true);
+					MagicCircleFX.GetComponent<ParticleSystem>().Play();
+				}
 				//print("magic!!");		
-		}else{
-			ToActivateFlag = false;
-			if(MagicCircleFX != null && !OverActivate){
-				Destroy(MagicCircleFX);
+			}else{
+				ToActivateFlag = false;
+				if(MagicCircleFX != null && !OverActivate){
+					Destroy(MagicCircleFX);
+				}
+				//print("NO");
 			}
-			//print("NO");
 		}
+
 
 		MagicActivateColor = new Vector4(1,1,1,a);
 		GetComponent<SpriteRenderer> ().color = MagicActivateColor;
@@ -78,9 +84,10 @@ public class MagicCircle : MonoBehaviour {
 		PlayTime = a*5f;
 
 		if(a >= 1){
-			OverActivate = true;
+			OverActivate = true;		
 			LevelMagicCircle.MagicCircleDone[level] = 1;
 			GameObject.Find("InterFace").transform.GetChild(5).GetComponent<LevelRuneLight>().ToActivateRuneLight(level);
+			Exit.SetActive(true);
 		}
 
 

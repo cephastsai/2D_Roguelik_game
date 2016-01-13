@@ -30,7 +30,7 @@ public class MoreFoodInBoard : MonoBehaviour {
 
 	}
 	
-	void moreFoodInBoard(){
+	public void moreFoodInBoard(){
 		
 		timer = Time.time;
 		/*

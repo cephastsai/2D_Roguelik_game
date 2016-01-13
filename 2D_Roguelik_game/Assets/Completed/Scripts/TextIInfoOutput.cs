@@ -23,6 +23,11 @@ public class TextIInfoOutput : MonoBehaviour {
 				ColdDownTime = 0.3f;
 				PerAlphaLose = 4f;
 				break;
+			case 3:
+				ExistenceTime = 3f;
+				ColdDownTime = 0.3f;
+				PerAlphaLose = 4f;
+				break;
 			}
 		}
 	}
@@ -31,6 +36,8 @@ public class TextIInfoOutput : MonoBehaviour {
 	private	Queue<string> TextInfoList = new Queue<string>();
 	//text time que
 	private Queue<SetTextTime> InfoTime = new Queue<SetTextTime>();
+	//queue count 0 
+	public bool InfoListClean = true;
 
 	//text
 	private Text storytext = null;
@@ -94,6 +101,13 @@ public class TextIInfoOutput : MonoBehaviour {
 		if(Time.time - TextColdDown >= TextColdDownTime && ColdTimeflag){
 			ColdTimeflag = false;
 			Textflag = false;
+		}
+
+		//Queue Count null
+		if(TextInfoList.Count == 0){
+			InfoListClean = true;
+		}else{
+			InfoListClean = false;
 		}
 
 	}

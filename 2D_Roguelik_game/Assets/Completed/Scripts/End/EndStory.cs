@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class EndStory : MonoBehaviour {
 
+	public GameObject EndImage;
+	private bool endimageflag = false;
+
 	//story texts
 	public GameObject storytext1;
 	public GameObject storytext2;
@@ -17,6 +20,7 @@ public class EndStory : MonoBehaviour {
 	//time
 	private float Timer = 0;
 	private int lastTime = 0;
+	private float startTime = 0;
 
 	//Audio
 	public AudioSource EndSong;
@@ -25,6 +29,7 @@ public class EndStory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		startTime = Time.time;
 
 		EndSong.volume = 0.1f;
 
@@ -55,15 +60,63 @@ public class EndStory : MonoBehaviour {
 
 
 
-		//storypoem.text += "你 要如何理解 我們?\n\n\n\n\n\n\n\n\n\n\n";
+		storypoem.text += "你 要如何理解 我們?\n\n\n\n\n\n\n\n\n\n\n";
+		//storypoem.text += "\n\n\n\n\n\n\n\n\n\n\n";
+
+
+
+
+
+
 		storypoem.text += "\n\n\n\n\n\n\n\n\n\n\n";
 
+		//~~~~~~
+		storypoem.text +="Lair:grim split製作團隊\n\n\n\n\n";
+
+		storypoem.text +="企劃 : 蔡元泓\n\n";
+
+		storypoem.text +="      胡又臻\n\n\n";
+
+		storypoem.text +="程式 : 蔡元泓\n\n";
+		
+		storypoem.text +="      莊承欣\n\n";
+
+		storypoem.text +="      張求凱\n\n\n";
+
+		storypoem.text +="美術 : 利冠鳳\n\n";
+		
+		storypoem.text +="      胡又臻\n\n";
+		
+		storypoem.text +="特效 : 張求凱\n\n\n";
+
+		storypoem.text +="指導老師 : 謝承勳老師\n\n\n\n\n\n\n\n";
+
+		storypoem.text +="背景音樂 : \n\n\n";
+
+		storypoem.text +="遊戲開始畫面\n\n";
+
+		storypoem.text +="\"Deep Haze\" Kevin MacLeod (incompetech.com) \n";
+		storypoem.text +="Licensed under Creative Commons: By Attribution 3.0\n";
+		storypoem.text +="http://creativecommons.org/licenses/by/3.0/";
 
 
+		storypoem.text +="\n\n\n";
+		storypoem.text +="遊戲中\n\n";
+		
+		storypoem.text +="\"Tenebrous Brothers Carnival - Mermaid\" Kevin MacLeod (incompetech.com) \n";
+		storypoem.text +="Licensed under Creative Commons: By Attribution 3.0\n";
+		storypoem.text +="http://creativecommons.org/licenses/by/3.0/";
 
 
-
-		storypoem.text += "E N D\n\n";
+		storypoem.text +="\n\n\n";
+		storypoem.text +="結局\n\n";
+		
+		storypoem.text +="\"Darkness is Coming\" Kevin MacLeod (incompetech.com)  \n";
+		storypoem.text +="Licensed under Creative Commons: By Attribution 3.0\n";
+		storypoem.text +="http://creativecommons.org/licenses/by/3.0/";
+		storypoem.text +="\n\n\n\n\n\n\n\n\n\n\n\n";
+		storypoem.text +="Thank You";
+	
 
 		//=======================================================================
 	}
@@ -82,14 +135,18 @@ public class EndStory : MonoBehaviour {
 		}
 
 		if(poemstartflag){
-			storypoem.transform.position = Vector3.MoveTowards(storypoem.transform.position,new Vector3(storypoem.transform.position.x,1000,0),PoemMoveV *  Time.deltaTime);
+			storypoem.transform.position = Vector3.MoveTowards(storypoem.transform.position,new Vector3(storypoem.transform.position.x,10000,0),PoemMoveV *  Time.deltaTime);
+		}
+
+		if(endimageflag){
+			EndImage.transform.position = Vector3.MoveTowards(EndImage.transform.position,new Vector3(EndImage.transform.position.x,10000,0), 0.4f*Time.deltaTime);
 		}
 	}
 
 	void storytime(){
 
 		print((int)Timer);
-		switch((int)Timer){
+		switch((int)(Timer - startTime)){
 		case 3:
 			storytext1.GetComponent<InfoOutput>().AddStringToQue("我走了出去，卻是一片漆黑",1);
 			break;
@@ -124,9 +181,9 @@ public class EndStory : MonoBehaviour {
 			break;
 		case 45:
 			poemstartflag = true;
-			break;		
-		case 90:
-			storytext3.GetComponent<InfoOutput>().AddStringToQue("你 要如何理解 我們?",3);
+			break;	
+		case 93:
+			endimageflag = true;
 			break;
 		}
 	}
