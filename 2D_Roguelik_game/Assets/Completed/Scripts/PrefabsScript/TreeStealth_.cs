@@ -3,8 +3,8 @@ using System.Collections;
 
 public class TreeStealth_ : MonoBehaviour {
 	public int d = 1;
-	public float c = 1f;
-	public Color A = new Vector4(1,1,1,1);
+	public float c = 0f;
+	public Color A = new Vector4(1,1,1,0);
 	// Use this for initialization
 	void Start () {
 
@@ -14,20 +14,11 @@ public class TreeStealth_ : MonoBehaviour {
 	void Update () {
 		A = new Vector4 (1, 1, 1, c);
 		GetComponent<SpriteRenderer> ().color = A;
-		if (d==1) {
-			c -= 0.02f;
-			if (c < 0) 
-			{
-				d = 0;
-			}
-		} 
-		else if (d == 0) 
+		/*
+		if (c < 1) 
 		{
-			c +=0.02f;
-			if (c > 1) 
-			{
-				d =1;
-			}
-		}
+			c +=1/255;
+		}*/
+
 	}
 }

@@ -17,12 +17,20 @@ public class MagicCircle : MonoBehaviour {
 	private float timer = 0;
 	private bool tempflag = true;
 
+	//ParticleSystem
+	private GameObject AlureFX = null;
+	private GameObject MagicCircleFX = null;
+	private float PlayTime = 0f;
+
 	void Start () {
 		//get player
 		player = GameObject.FindGameObjectWithTag("Player");
 
+		// get prefabs
+		AlureFX = (GameObject)Resources.Load("Prefabs/AlureFX",typeof(GameObject));
 
 		level = GameObject.Find("GameManager(Clone)").GetComponent<Completed.GameManager>().getlevel();
+
 		//get Sprite Magic Circle
 		SetSprite();
 
@@ -37,9 +45,18 @@ public class MagicCircle : MonoBehaviour {
 
 		if(player.transform.position.x >= 3 && player.transform.position.x <= 4 && player.transform.position.y >= 3 && player.transform.position.y <= 4){
 			ToActivateFlag = true;
-			//print("magic!!");		
+
+			if(MagicCircleFX == null){
+				MagicCircleFX = Instantiate(AlureFX,transform.position,Quaternion.Euler(90, 0, 0)) as GameObject;
+				MagicCircleFX.GetComponent<ParticleSystem>().Simulate(PlayTime,true,true);
+				MagicCircleFX.GetComponent<ParticleSystem>().Play();
+			}
+				//print("magic!!");		
 		}else{
 			ToActivateFlag = false;
+			if(MagicCircleFX != null && !OverActivate){
+				Destroy(MagicCircleFX);
+			}
 			//print("NO");
 		}
 
@@ -57,7 +74,9 @@ public class MagicCircle : MonoBehaviour {
 				}
 			}
 		}
-		
+
+		PlayTime = a*5f;
+
 		if(a >= 1){
 			OverActivate = true;
 			LevelMagicCircle.MagicCircleDone[level] = 1;
@@ -67,6 +86,7 @@ public class MagicCircle : MonoBehaviour {
 
 		if(ToActivateFlag && tempflag){
 			timer = Time.time;
+
 			tempflag = false;
 		}
 
