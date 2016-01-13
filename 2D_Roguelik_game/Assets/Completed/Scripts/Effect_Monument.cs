@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Effect_Monument : MonoBehaviour {
     public Animator ani;
+	private bool flag = true;
 
     void Awake()
     {
@@ -20,7 +21,12 @@ public class Effect_Monument : MonoBehaviour {
         float dist = Vector3.Distance(this.transform.position, GameObject.FindWithTag("Player").transform.position);
         if (dist < 1.1)
         {
-            ani.SetInteger("enterFrame", 1);
+			if(flag){
+				print("1");
+				ani.SetInteger("enterFrame", 1);
+				flag = false;
+			}
+            
         }
         else
         {

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TreeStealth : MonoBehaviour {
+public class TreeStealth_ : MonoBehaviour {
 	public int d = 1;
 	public float c = 1f;
 	public Color A = new Vector4(1,1,1,1);
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
