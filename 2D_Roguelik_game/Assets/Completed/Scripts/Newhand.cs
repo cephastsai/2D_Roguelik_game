@@ -426,7 +426,7 @@ public class Newhand : MonoBehaviour {
 			//=================================================================================================
 		case MissionSection.MagicCirCle2:
 			if(missionflag){
-				text.text = "看來這關的符紋被我啟動了!\n[點擊繼續]";
+				text.text = "看來這關的符紋被我啟動，因此出口也出現了!\n[點擊繼續]";
 				ShowText();
 				arrowhead = (GameObject)Instantiate(arrow,new Vector3(-1.38f,-0.84f,0f),Quaternion.identity);
 				
