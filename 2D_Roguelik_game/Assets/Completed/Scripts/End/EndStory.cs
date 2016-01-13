@@ -75,17 +75,17 @@ public class EndStory : MonoBehaviour {
 
 		storypoem.text +="企劃 : 蔡元泓\n\n";
 
-		storypoem.text +="      胡又臻\n\n\n";
-
+		storypoem.text +="        胡又臻\n\n\n";
+		  
 		storypoem.text +="程式 : 蔡元泓\n\n";
 		
-		storypoem.text +="      莊承欣\n\n";
+		storypoem.text +="        莊承欣\n\n";
 
-		storypoem.text +="      張求凱\n\n\n";
+		storypoem.text +="        張求凱\n\n\n";
 
 		storypoem.text +="美術 : 利冠鳳\n\n";
 		
-		storypoem.text +="      胡又臻\n\n";
+		storypoem.text +="        胡又臻\n\n";
 		
 		storypoem.text +="特效 : 張求凱\n\n\n";
 
@@ -114,6 +114,8 @@ public class EndStory : MonoBehaviour {
 		storypoem.text +="\"Darkness is Coming\" Kevin MacLeod (incompetech.com)  \n";
 		storypoem.text +="Licensed under Creative Commons: By Attribution 3.0\n";
 		storypoem.text +="http://creativecommons.org/licenses/by/3.0/";
+		storypoem.text +="\n\n\n\n\n\n";
+		storypoem.text +="《理解》 出自 批踢踢實業坊  #1MUV08Xo (poem)";
 		storypoem.text +="\n\n\n\n\n\n\n\n\n\n\n\n";
 		storypoem.text +="Thank You";
 	
