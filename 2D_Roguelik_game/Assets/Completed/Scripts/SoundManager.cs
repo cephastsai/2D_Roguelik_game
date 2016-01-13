@@ -26,6 +26,13 @@ namespace Completed
 			//Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
 			DontDestroyOnLoad (gameObject);
 		}
+
+		void Update(){
+			if(!musicSource.isPlaying){
+				musicSource.Play();
+			}
+			//print(musicSource.isPlaying);
+		}
 		
 		
 		//Used to play single sound clips.
@@ -56,6 +63,10 @@ namespace Completed
 			
 			//Play the clip.
 			efxSource.Play();
+		}
+
+		public void PlayGameSong(){
+			musicSource.Play();
 		}
 	}
 }

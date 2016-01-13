@@ -18,6 +18,8 @@ namespace Completed
 		public int playerFoodPoints = 100;						//Starting value for Player food points.
         public int playerMaxFoodPoint = 100;
 		public static GameManager instance = null;				//Static instance of GameManager which allows it to be accessed by any other script.
+		//public AudioSource musicSource;
+		public GameObject SoundManager;
 		/*[HideInInspector] */public bool playersTurn = false;       //Boolean to check if it's players turn, hidden in inspector but public.
 
         public int starve;
@@ -73,7 +75,7 @@ namespace Completed
 			InformationReaderCs.load();
 
             //Get a component reference to the attached BoardManager script
-            boardScript = GetComponent<BoardManager>();
+            boardScript = GetComponent<BoardManager>();		
 
 			//gameObject.AddComponent<Story>().init();
 
@@ -106,6 +108,7 @@ namespace Completed
 		//Initializes the game for each level.
 		void InitGame() 
 		{
+
 			//While doingSetup is true the player can't move, prevent player from moving while title card is up.
 			doingSetup = true;
 			playersTurn = false;
@@ -160,7 +163,7 @@ namespace Completed
 		
 		//Update is called every frame.
 		void Update()
-		{		
+		{			
 			if(Time.time - PlayerBornTime >= 1.5f && !PlayerBornTimeSetup && !levelImage.activeInHierarchy){
 				//print("go");
 				doingSetup = false;

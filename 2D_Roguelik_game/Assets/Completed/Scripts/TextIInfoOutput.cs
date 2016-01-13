@@ -44,13 +44,15 @@ public class TextIInfoOutput : MonoBehaviour {
 
 	//color a
 	private Material BGMat = null;
+	private SpriteRenderer BGsprite = null;
 	private Color color;
 	private bool SetColor = false;
 
 
 	void Start () {
 		storytext = GameObject.Find ("storytext").GetComponent<Text> ();
-		BGMat = (Material)Resources.Load("Material/StoryInfoBgMat",typeof(Material));
+		//BGMat = (Material)Resources.Load("Material/StoryInfoBgMat",typeof(Material));
+		BGsprite = GetComponent<SpriteRenderer>();
 
 		//set value
 		color.a = 0/255;
@@ -71,7 +73,8 @@ public class TextIInfoOutput : MonoBehaviour {
 	
 
 	void Update () {
-		BGMat.color = color;
+		//BGMat.color = color;
+		BGsprite.color = color;
 		storytext.color = color;
 
 		if(TextInfoList.Count != 0 && !Textflag){
